@@ -11,9 +11,7 @@
 
 .byebug_history
 
-/config/database.yml
 /config/master.key
-
 .env
 
 /coverage

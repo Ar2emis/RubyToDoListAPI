@@ -1,0 +1,50 @@
+version: 2.1
+
+orbs:
+  ruby: circleci/ruby@1.0 
+
+jobs:
+  lintering:
+    docker:
+      - image: cimg/ruby:2.7-node
+    steps:
+      - checkout 
+      - ruby/install-deps 
+      - run: 
+          name: rubocop
+          command: bundle exec rubocop
+          
+  test:
+    docker:
+      - image: cimg/ruby:2.7-node
+      -- image: circleci/postgres:13
+        environment:
+          POSTGRES_USER: todo_list
+          POSTGRES_DB: todo_list_test
+          POSTGRES_PASSWORD: "todo_list"
+    environment:
+      BUNDLE_JOBS: "3"
+      BUNDLE_RETRY: "3"
+      PGHOST: 127.0.0.1
+      DATABASE_USERNAME: todo_list
+      DATABASE_PASSWORD: "todo_list"
+      RAILS_ENV: test
+    steps:
+      - checkout 
+      - ruby/install-deps 
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+      - run:
+          name: Database setup
+          command: bundle exec rails db:schema:load --trace
+      - run: 
+          name: run specs
+          command: bundle exec rspec
+
+workflows:
+  version: 2
+  lint_and_test:
+    jobs:
+      - lintering
+      - test
