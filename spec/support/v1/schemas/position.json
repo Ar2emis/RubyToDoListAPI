@@ -1,0 +1,9 @@
+{
+  "data": {
+    "id": "string",
+    "type": "string",
+    "attributes": {
+      "position": "number"
+    }
+  }
+}

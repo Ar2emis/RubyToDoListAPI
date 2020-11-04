@@ -1,0 +1,28 @@
+{
+  "data": {
+    "id": "number",
+    "type": "string",
+    "attributes": {
+      "name": "string"
+    },
+    "relationships": {
+      "tasks": {
+        "data": [
+          { 
+            "id": "number",
+            "type": "string"
+          }
+        ]
+      },
+      "user": {
+        "data": {
+          "id": "number",
+          "type": "string"
+        }
+      }
+    },
+    "links": {
+      "self": "string"
+    }
+  }
+}

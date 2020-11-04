@@ -1,14 +1,15 @@
 require 'simplecov'
 
+CONCEPTS = %w[task project user comment session].freeze
+CONTRACTS = CONCEPTS.map { |concept| "app/concepts/#{concept}/contracts/" }
+                    .append('app/concepts/application_contract.rb').freeze
+OPERATONS = CONCEPTS.map { |concept| "app/concepts/#{concept}/" }.freeze
+
 SimpleCov.start 'rails' do
   minimum_coverage 90
-  add_filter ['app/jobs/application_job.rb',
-              'app/mailers/application_mailer.rb',
-              'app/channels/application_cable',
-              'app/admin']
-  add_group 'Decorators', 'app/decorators'
-  add_group 'Presenters', 'app/presenters'
-  add_group 'Queries', 'app/queries'
-  add_group 'Services', 'app/services'
-  add_group 'Forms', 'app/forms'
+  add_group('Contracts', CONTRACTS)
+  add_group('Operations', OPERATONS)
+  add_group('Serializers', 'app/serializers')
+  add_group('Uploaders', 'app/uploaders')
+  add_group('Services', 'app/services')
 end

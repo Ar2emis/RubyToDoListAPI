@@ -1,0 +1,10 @@
+{
+  "data": {
+    "id": "number",
+    "type": "string",
+    "attributes": {
+      "body": "string",
+      "image": "string"
+    }
+  }
+}

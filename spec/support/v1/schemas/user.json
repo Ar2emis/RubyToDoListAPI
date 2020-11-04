@@ -1,0 +1,11 @@
+{
+  "data": {
+    "id": "nuber",
+    "type": "string",
+    "attributes": {
+      "username": "string",
+      "provider": "string",
+      "uid": "string"
+    }
+  }
+}

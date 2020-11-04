@@ -23,11 +23,12 @@ Style/Documentation:
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*.rb'
-    - 'app/admin/*.rb'
-    - 'Guardfile'
 
 Style/FrozenStringLiteralComment:
   Enabled: false
 
-RSpec/MultipleExpectations:
-  Max: 3
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+RSpec/MultipleMemoizedHelpers:
+  Max: 6

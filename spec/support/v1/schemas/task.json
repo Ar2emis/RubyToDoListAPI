@@ -1,0 +1,22 @@
+{
+  "data": {
+    "id": "number",
+    "type": "string",
+    "attributes": {
+      "name": "string",
+      "position": "number",
+      "due_date": "string",
+      "done": "string"
+    },
+    "relationships": {
+      "comments": {
+        "data": [
+          {
+            "id": "number",
+            "type": "string"
+          }
+        ]
+      }
+    }
+  }
+}
