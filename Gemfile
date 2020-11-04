@@ -39,8 +39,8 @@ end
 
 group :test do
   gem 'dox', '~> 1.2.0'
+  gem 'json_matchers', '~> 0.11.1'
   gem 'shoulda-matchers', '~> 4.4.1'
   gem 'simplecov', '~> 0.19.0'
   gem 'trailblazer-test', '~> 0.1.1'
-  gem "json_matchers", '~> 0.11.1'
 end
