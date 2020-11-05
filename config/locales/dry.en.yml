@@ -5,6 +5,8 @@ en:
         rules:
           username:
             exists?: already exists
+          password_confirmation:
+            match?: doesn't match password
       project:
         rules:
           name:

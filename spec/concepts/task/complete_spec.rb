@@ -15,7 +15,7 @@ RSpec.describe Task::Complete do
     end
 
     context 'when task does not exists' do
-      let(:default_params) { { id: -1 } }
+      let(:default_params) { { task_id: -1 } }
 
       it 'returns model error' do
         assert_fail described_class, ctx({}, deep_merge: false) do |result|

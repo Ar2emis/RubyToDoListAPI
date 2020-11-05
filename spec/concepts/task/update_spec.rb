@@ -38,7 +38,7 @@ RSpec.describe Task::Update do
       end
     end
 
-    context 'when task does not exists' do
+    context 'when task does not exist' do
       let(:default_params) { { id: -1 } }
 
       it 'returns model error' do

@@ -18,7 +18,7 @@ class User::Contracts::Create < ApplicationContract
     end
 
     rule(:password_confirmation, :password) do
-      key.failure(:eql?, left: :password) if values[:password_confirmation] != values[:password]
+      key.failure(:match?) if values[:password_confirmation] != values[:password]
     end
 
     rule(:username) do

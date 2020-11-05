@@ -18,8 +18,8 @@ RSpec.describe Task::Index do
       end
     end
 
-    context 'when task does not exists' do
-      let(:default_params) { { id: -1 } }
+    context 'when project does not exist' do
+      let(:default_params) { { project_id: -1 } }
 
       it 'returns model error' do
         assert_fail described_class, ctx({}, deep_merge: false) do |result|
