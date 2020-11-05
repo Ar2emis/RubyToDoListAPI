@@ -15,6 +15,7 @@ gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 gem 'shrine', '~> 3.3.0'
 gem 'simple_endpoint', '~> 1.0.0'
 gem 'trailblazer-rails', '~>2.1.7'
+gem 'versionist', '~> 2.0.1'
 
 group :development, :test do
   gem 'awesome_print', '~> 1.8.0'

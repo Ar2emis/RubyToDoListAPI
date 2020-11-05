@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   namespace :api do
-    namespace :v1 do
+    api_version(module: 'V1', path: { value: 'v1' }, default: true) do
       namespace :auth do
         post '/', to: 'registrations#create'
         post '/sign_in', to: 'sessions#create'
@@ -17,6 +17,8 @@ Rails.application.routes.draw do
         patch '/position', to: 'tasks#position'
       end
       resources :comments, only: [:destroy]
+
+      get '/docs', to: 'documentations#docs'
     end
   end
 end

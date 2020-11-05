@@ -1,6 +1,0 @@
-user = User.create!(username: 'Fuck', password: '12345678')
-project = user.projects.create!(name: 'Shit')
-task_one = project.tasks.create!(name: 'Ass', position: 0)
-task_two = project.tasks.create!(name: 'But', position: 1)
-task_one.comments.create!(body: 'Dick')
-task_two.comments.create!(body: 'Cock')

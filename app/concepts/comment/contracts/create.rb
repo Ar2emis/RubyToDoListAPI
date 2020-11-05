@@ -14,7 +14,7 @@ class Comment::Contracts::Create < ApplicationContract
     end
 
     rule(:image) do
-      continue unless key?
+      next unless value
 
       attacher = ImageUploader::Attacher.new
       attacher.assign(value)

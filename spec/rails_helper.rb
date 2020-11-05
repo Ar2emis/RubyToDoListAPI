@@ -9,7 +9,7 @@ require 'rspec/rails'
 
 require 'dox'
 
-%w[spec/support/**/*.rb spec/docs/v1/descriptions/*.rb].each do |directory|
+%w[spec/support/**/*.rb spec/docs/**/*.rb].each do |directory|
   Dir[Rails.root.join(directory)].sort.each { |f| require f }
 end
 

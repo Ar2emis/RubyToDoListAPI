@@ -1,46 +1,52 @@
 RSpec.describe 'Api::V1::Tasks', type: :request do
+  include Docs::V1::Tasks::Api
+
   let(:user_params) { attributes_for(:user) }
   let!(:user) { create(:user, **user_params) }
   let(:headers) { call(Session::Create, params: user_params)[:tokens] }
 
   describe 'GET /api/v1/projects/{id}/tasks' do
+    include Docs::V1::Tasks::Index
+
     before do
       project = create(:project, user: user)
       create_list(:task, 3, project: project)
-      get api_v1_project_tasks_path(project), headers: headers
+      get api_v1_project_tasks_path(project), headers: headers, as: :json
     end
 
     it 'returns http ok status' do
       expect(response).to have_http_status(:ok)
     end
 
-    it 'returns tasks data' do
+    it 'returns tasks', :dox do
       expect(response.body).to match_json_schema('task')
     end
   end
 
   describe 'GET /api/v1/task/{id}' do
+    include Docs::V1::Tasks::Show
     let(:task) { create(:task, project: create(:project, user: user)) }
 
     before do
-      get api_v1_task_path(task), headers: headers
+      get api_v1_task_path(task), headers: headers, as: :json
     end
 
     it 'returns http ok status' do
       expect(response).to have_http_status(:ok)
     end
 
-    it 'returns task data' do
+    it 'returns task', :dox do
       expect(response.body).to match_json_schema('task')
     end
   end
 
   describe 'PATCH /api/v1/task/{id}' do
+    include Docs::V1::Tasks::Update
     let(:task) { create(:task, project: create(:project, user: user)) }
-    let(:params) { { data: attributes_for(:task) } }
+    let(:params) { { data: attributes_for(:task).slice(:name, :due_date) } }
 
     before do
-      patch api_v1_task_path(task), params: params, headers: headers
+      patch api_v1_task_path(task), params: params, headers: headers, as: :json
     end
 
     context 'when params is valid' do
@@ -48,7 +54,7 @@ RSpec.describe 'Api::V1::Tasks', type: :request do
         expect(response).to have_http_status(:created)
       end
 
-      it 'returns task data' do
+      it 'returns task', :dox do
         expect(response.body).to match_json_schema('task')
       end
     end
@@ -67,11 +73,12 @@ RSpec.describe 'Api::V1::Tasks', type: :request do
   end
 
   describe 'POST /api/v1/projects/{project_id}/tasks' do
+    include Docs::V1::Tasks::Create
     let(:project) { create(:project, user: user) }
-    let(:params) { { data: attributes_for(:task) } }
+    let(:params) { { data: attributes_for(:task).slice(:name) } }
 
     before do
-      post api_v1_project_tasks_path(project), params: params, headers: headers
+      post api_v1_project_tasks_path(project), params: params, headers: headers, as: :json
     end
 
     context 'when params is valid' do
@@ -79,7 +86,7 @@ RSpec.describe 'Api::V1::Tasks', type: :request do
         expect(response).to have_http_status(:created)
       end
 
-      it 'returns task data' do
+      it 'returns task', :dox do
         expect(response.body).to match_json_schema('task')
       end
     end
@@ -98,14 +105,15 @@ RSpec.describe 'Api::V1::Tasks', type: :request do
   end
 
   describe 'DELETE /api/v1/tasks/{id}' do
+    include Docs::V1::Tasks::Destroy
     let(:task) { create(:task, project: create(:project, user: user)) }
 
     before do
-      delete api_v1_task_path(task), headers: headers
+      delete api_v1_task_path(task), headers: headers, as: :json
     end
 
     context 'when task exists' do
-      it 'returns http no content status' do
+      it 'returns http no content status', :dox do
         expect(response).to have_http_status(:no_content)
       end
     end
@@ -120,28 +128,30 @@ RSpec.describe 'Api::V1::Tasks', type: :request do
   end
 
   describe 'PATCH /api/v1/task/{task_id}/complete' do
+    include Docs::V1::Tasks::Complete
     let(:task) { create(:task, project: create(:project, user: user)) }
 
     before do
-      patch api_v1_task_complete_path(task), headers: headers
+      patch api_v1_task_complete_path(task), headers: headers, as: :json
     end
 
     it 'returns http created status' do
       expect(response).to have_http_status(:created)
     end
 
-    it 'returns task data' do
+    it 'returns task', :dox do
       expect(response.body).to match_json_schema('task')
     end
   end
 
   describe 'PATCH /api/v1/task/{task_id}/position' do
+    include Docs::V1::Tasks::Position
     let(:task) { create(:task, project: create(:project, user: user)) }
     let(:params) { { data: { position: task.position.next } } }
 
     before do
       create_list(:task, 3, project: task.project)
-      patch api_v1_task_position_path(task), params: params, headers: headers
+      patch api_v1_task_position_path(task), params: params, headers: headers, as: :json
     end
 
     context 'when params is valid' do
@@ -149,7 +159,7 @@ RSpec.describe 'Api::V1::Tasks', type: :request do
         expect(response).to have_http_status(:created)
       end
 
-      it 'returns task data' do
+      it 'returns position', :dox do
         expect(response.body).to match_json_schema('task')
       end
     end

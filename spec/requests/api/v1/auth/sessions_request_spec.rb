@@ -1,10 +1,14 @@
 RSpec.describe 'Api::V1::Auth::Sessions', type: :request do
+  include Docs::V1::Sessions::Api
+
   describe 'POST /api/v1/auth/sign_in' do
+    include Docs::V1::Sessions::Create
+
     let(:user_data) { attributes_for(:user) }
     let!(:user) { create(:user, **user_data) }
 
     before do
-      post api_v1_auth_sign_in_path, params: user_data
+      post api_v1_auth_sign_in_path, params: user_data, as: :json
     end
 
     context 'when params is valid' do
@@ -12,7 +16,7 @@ RSpec.describe 'Api::V1::Auth::Sessions', type: :request do
         expect(response).to have_http_status(:ok)
       end
 
-      it 'returns user data' do
+      it 'returns user', :dox do
         user_json = UserSerializer.new(user).to_json
         expect(response.body).to eq user_json
       end
@@ -36,6 +40,8 @@ RSpec.describe 'Api::V1::Auth::Sessions', type: :request do
   end
 
   describe 'PATCH /api/v1/auth/refresh' do
+    include Docs::V1::Sessions::Update
+
     let(:user_params) { attributes_for(:user) }
     let(:tokens) { call(Session::Create, params: user_params)[:tokens] }
     let(:refresh_token) { tokens[JWTSessions.refresh_header] }
@@ -43,7 +49,7 @@ RSpec.describe 'Api::V1::Auth::Sessions', type: :request do
 
     before do
       create(:user, **user_params)
-      patch api_v1_auth_refresh_path, headers: { JWTSessions.refresh_header => refresh_token }
+      patch api_v1_auth_refresh_path, headers: { JWTSessions.refresh_header => refresh_token }, as: :json
     end
 
     context 'when refresh token is valid' do
@@ -51,7 +57,7 @@ RSpec.describe 'Api::V1::Auth::Sessions', type: :request do
         expect(response).to have_http_status(:created)
       end
 
-      it 'returns new access token' do
+      it 'returns new access token', :dox do
         expect(response.headers[JWTSessions.access_header]).not_to eq access_token
       end
     end
@@ -66,12 +72,14 @@ RSpec.describe 'Api::V1::Auth::Sessions', type: :request do
   end
 
   describe 'DELETE /api/v1/auth/sign_out' do
+    include Docs::V1::Sessions::Destroy
+
     let(:user_params) { attributes_for(:user) }
     let(:refresh_token) { call(Session::Create, params: user_params)[:tokens][JWTSessions.refresh_header] }
 
     before do
       create(:user, **user_params)
-      delete api_v1_auth_sign_out_path, headers: { JWTSessions.refresh_header => refresh_token }
+      delete api_v1_auth_sign_out_path, headers: { JWTSessions.refresh_header => refresh_token }, as: :json
     end
 
     context 'when refresh token is valid' do
@@ -79,7 +87,7 @@ RSpec.describe 'Api::V1::Auth::Sessions', type: :request do
         expect(response).to have_http_status(:ok)
       end
 
-      it 'returns success message' do
+      it 'returns success message', :dox do
         expect(response.body).to match_json_schema('success')
       end
     end

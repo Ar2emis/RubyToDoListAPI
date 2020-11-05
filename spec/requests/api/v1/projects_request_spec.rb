@@ -1,5 +1,6 @@
 RSpec.describe 'Api::V1::Projects', type: :request do
   include Docs::V1::Projects::Api
+
   let(:user_params) { attributes_for(:user) }
   let!(:user) { create(:user, **user_params) }
   let(:headers) { call(Session::Create, params: user_params)[:tokens] }
@@ -9,40 +10,42 @@ RSpec.describe 'Api::V1::Projects', type: :request do
 
     before do
       create_list(:project, 3, user: user)
-      get api_v1_projects_path, headers: headers
-    end
-
-    it 'returns http ok status', :dox do
-      expect(response).to have_http_status(:ok)
-    end
-
-    it 'returns projects data', :dox do
-      expect(response.body).to match_json_schema('project')
-    end
-  end
-
-  describe 'GET /api/v1/projects/{id}' do
-    let(:project) { create(:project, user: user) }
-
-    before do
-      get api_v1_project_path(project), headers: headers
+      get api_v1_projects_path, headers: headers, as: :json
     end
 
     it 'returns http ok status' do
       expect(response).to have_http_status(:ok)
     end
 
-    it 'returns project data' do
+    it 'returns projects', :dox do
+      expect(response.body).to match_json_schema('project')
+    end
+  end
+
+  describe 'GET /api/v1/projects/{id}' do
+    include Docs::V1::Projects::Show
+    let(:project) { create(:project, user: user) }
+
+    before do
+      get api_v1_project_path(project), headers: headers, as: :json
+    end
+
+    it 'returns http ok status' do
+      expect(response).to have_http_status(:ok)
+    end
+
+    it 'returns project', :dox do
       expect(response.body).to match_json_schema('project')
     end
   end
 
   describe 'PATCH /api/v1/projects/{id}' do
+    include Docs::V1::Projects::Update
     let(:project) { create(:project, user: user) }
     let(:params) { { data: attributes_for(:project) } }
 
     before do
-      patch api_v1_project_path(project), params: params, headers: headers
+      patch api_v1_project_path(project), params: params, headers: headers, as: :json
     end
 
     context 'when params is valid' do
@@ -50,7 +53,7 @@ RSpec.describe 'Api::V1::Projects', type: :request do
         expect(response).to have_http_status(:created)
       end
 
-      it 'returns project data' do
+      it 'returns project', :dox do
         expect(response.body).to match_json_schema('project')
       end
     end
@@ -69,10 +72,11 @@ RSpec.describe 'Api::V1::Projects', type: :request do
   end
 
   describe 'POST /api/v1/projects' do
+    include Docs::V1::Projects::Create
     let(:params) { { data: attributes_for(:project) } }
 
     before do
-      post api_v1_projects_path, params: params, headers: headers
+      post api_v1_projects_path, params: params, headers: headers, as: :json
     end
 
     context 'when params is valid' do
@@ -80,7 +84,7 @@ RSpec.describe 'Api::V1::Projects', type: :request do
         expect(response).to have_http_status(:created)
       end
 
-      it 'returns project data' do
+      it 'returns project', :dox do
         expect(response.body).to match_json_schema('project')
       end
     end
@@ -99,14 +103,15 @@ RSpec.describe 'Api::V1::Projects', type: :request do
   end
 
   describe 'DELETE /api/v1/projects/{id}' do
+    include Docs::V1::Projects::Destroy
     let(:project) { create(:project, user: user) }
 
     before do
-      delete api_v1_project_path(project), headers: headers
+      delete api_v1_project_path(project), headers: headers, as: :json
     end
 
     context 'when project exists' do
-      it 'returns http no content status' do
+      it 'returns http no content status', :dox do
         expect(response).to have_http_status(:no_content)
       end
     end
