@@ -12,6 +12,10 @@ RSpec.describe Comment::Create do
       it 'success' do
         assert_pass described_class, ctx({}, deep_merge: false), {}
       end
+
+      it 'creates new comment' do
+        expect { call(described_class, **ctx({}, deep_merge: false)) }.to change(Comment, :count).by(1)
+      end
     end
 
     context 'when body empty' do

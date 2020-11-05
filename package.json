@@ -1,7 +1,5 @@
 {
   "dependencies": {
-    "aglio": "^2.3.0",
-    "redoc": "^2.0.0-rc.45",
-    "redoc-cli": "^0.9.13"
+    "aglio": "^2.3.0"
   }
 }

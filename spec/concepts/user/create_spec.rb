@@ -8,6 +8,10 @@ RSpec.describe User::Create do
       it 'success' do
         assert_pass described_class, ctx({}), {}
       end
+
+      it 'creates user' do
+        expect { call(described_class, **ctx({}, deep_merge: false)) }.to change(User, :count).by(1)
+      end
     end
 
     context 'when username is empty' do

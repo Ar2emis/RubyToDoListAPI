@@ -17,10 +17,10 @@ class ApplicationController < ActionController::API
   end
 
   def default_handler
-    { success: lambda do |result, serializer: nil, **options|
-                 return render(**options) unless result[:model]
+    { success: lambda do |result, serializer: nil, **ctx|
+                 return render(**ctx) unless result[:model]
 
-                 render json: serializer ? serializer.new(result[:model]) : result[:model], **options
+                 render json: serializer ? serializer.new(result[:model]) : result[:model], **ctx
                end,
       invalid: lambda do |result, **|
                  render json: { errors: result['contract.default'].errors.messages }, status: :unprocessable_entity

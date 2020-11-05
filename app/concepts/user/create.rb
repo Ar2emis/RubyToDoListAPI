@@ -5,8 +5,8 @@ class User::Create < Trailblazer::Operation
   step Contract::Persist()
   step :generate_tokens!
 
-  def generate_tokens!(options, params:, request:, **)
+  def generate_tokens!(ctx, params:, request:, **)
     result = Session::Create.call(params: params, request: request)
-    options[:tokens] = result[:tokens]
+    ctx[:tokens] = result[:tokens]
   end
 end

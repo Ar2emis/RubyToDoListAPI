@@ -3,7 +3,7 @@ RSpec.describe Comment::Destroy do
     let(:user_params) { attributes_for(:user) }
     let!(:user) { create(:user, **user_params) }
     let(:default_options) { { request: test_request(user_params: user_params) } }
-    let(:comment) { create(:comment, task: create(:task, project: create(:project, user: user))) }
+    let!(:comment) { create(:comment, task: create(:task, project: create(:project, user: user))) }
     let(:default_params) { { id: comment.id } }
 
     context 'when params is valid' do
@@ -11,6 +11,10 @@ RSpec.describe Comment::Destroy do
 
       it 'success' do
         assert_pass described_class, ctx({}, deep_merge: false), {}
+      end
+
+      it 'destroys comment' do
+        expect { call(described_class, **ctx({}, deep_merge: false)) }.to change(Comment, :count).by(-1)
       end
     end
 

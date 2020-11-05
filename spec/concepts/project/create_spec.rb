@@ -11,6 +11,10 @@ RSpec.describe Project::Create do
       it 'success' do
         assert_pass described_class, ctx({}, deep_merge: false), user_id: user.id
       end
+
+      it 'creates project' do
+        expect { call(described_class, **ctx({}, deep_merge: false)) }.to change(Project, :count).by(1)
+      end
     end
 
     context 'when name empty' do

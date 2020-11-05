@@ -10,7 +10,6 @@ class Session::Create < Session::Base
   def tokens!(ctx, model:, **)
     payload = payload(model)
     tokens = JWTSessions::Session.new(payload: payload, refresh_payload: payload).login
-    ctx[:tokens] = { JWTSessions.access_header => bearer(tokens[:access]),
-                     JWTSessions.refresh_header => tokens[:refresh] }
+    ctx[:tokens] = build_headers(**tokens.slice(:access, :refresh))
   end
 end

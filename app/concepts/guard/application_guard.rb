@@ -4,13 +4,17 @@ class Guard::ApplicationGuard
   def call(ctx, token:, request:, **)
     @request = request
     yield
-    payload = JWTSessions::Token.decode!(token).first
-    ctx[:current_user] = User.find_by(id: payload['user_id'])
+    ctx[:current_user] = current_user(token)
   rescue JWTSessions::Errors::Unauthorized
     false
   end
 
   private
+
+  def current_user(token)
+    payload = JWTSessions::Token.decode!(token).first
+    User.find_by(id: payload['user_id'])
+  end
 
   def request_headers
     @request.headers
