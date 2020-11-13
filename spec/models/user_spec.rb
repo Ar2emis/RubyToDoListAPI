@@ -1,15 +1,19 @@
 RSpec.describe User, type: :model do
+  describe 'validations' do
+    it { is_expected.to validate_uniqueness_of(:username) }
+  end
+
   describe 'associations' do
     it { is_expected.to have_many(:projects).dependent(:destroy) }
-
-    { tasks: :projects, comments: :tasks }.each do |models, through_models|
-      it { is_expected.to have_many(models).through(through_models) }
-    end
+    it { is_expected.to have_many(:tasks).through(:projects) }
+    it { is_expected.to have_many(:comments).through(:tasks) }
   end
 
   describe 'db fields' do
-    %i[username password_digest provider uid].each do |field|
-      it { is_expected.to have_db_column(field) }
-    end
+    it { is_expected.to have_db_column(:username) }
+    it { is_expected.to have_db_column(:password_digest) }
+    it { is_expected.to have_db_column(:provider) }
+    it { is_expected.to have_db_column(:uid) }
+    it { is_expected.to have_db_index(:username) }
   end
 end

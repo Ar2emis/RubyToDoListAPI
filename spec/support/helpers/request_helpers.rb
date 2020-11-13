@@ -8,7 +8,7 @@ module RequestHelpers
   end
 
   def tokens_headers(user_params)
-    call(Session::Create, params: user_params, request: test_request)[:tokens]
+    Api::V1::Session::Operation::Create.call(params: user_params, request: test_request)[:headers]
   end
 end
 

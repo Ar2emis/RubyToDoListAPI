@@ -3,14 +3,14 @@ RSpec.describe 'Api::V1::Tasks', type: :request do
 
   let(:user_params) { attributes_for(:user) }
   let!(:user) { create(:user, **user_params) }
-  let(:headers) { call(Session::Create, params: user_params)[:tokens] }
+  let(:headers) { Api::V1::Session::Operation::Create.call(params: user_params)[:headers] }
 
   describe 'GET /api/v1/projects/{id}/tasks' do
     include Docs::V1::Tasks::Index
 
+    let(:project) { create(:project, user: user, tasks: create_list(:task, 3)) }
+
     before do
-      project = create(:project, user: user)
-      create_list(:task, 3, project: project)
       get api_v1_project_tasks_path(project), headers: headers, as: :json
     end
 
@@ -146,11 +146,10 @@ RSpec.describe 'Api::V1::Tasks', type: :request do
 
   describe 'PATCH /api/v1/task/{task_id}/position' do
     include Docs::V1::Tasks::Position
-    let(:task) { create(:task, project: create(:project, user: user)) }
-    let(:params) { { data: { position: task.position.next } } }
+    let(:task) { create(:task, project: create(:project, user: user, tasks: create_list(:task, 3))) }
+    let(:params) { { data: { position: Api::V1::Task::Operation::Position::DOWN } } }
 
     before do
-      create_list(:task, 3, project: task.project)
       patch api_v1_task_position_path(task), params: params, headers: headers, as: :json
     end
 

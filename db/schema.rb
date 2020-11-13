@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2020_10_27_212651) do
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
-    t.string "body"
+    t.string "body", null: false
     t.text "image_data"
     t.bigint "task_id"
     t.datetime "created_at", precision: 6, null: false
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2020_10_27_212651) do
   end
 
   create_table "projects", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2020_10_27_212651) do
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.integer "position"
     t.boolean "done", default: false
     t.datetime "due_date"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2020_10_27_212651) do
     t.string "uid"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
   add_foreign_key "comments", "tasks"

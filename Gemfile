@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+gem 'acts_as_list', '~> 1.0.2'
 gem 'aws-sdk-s3', '~> 1.83.1'
 gem 'bcrypt', '~> 3.1.16'
 gem 'bootsnap', '>= 1.4.2', require: false
@@ -20,7 +21,6 @@ gem 'versionist', '~> 2.0.1'
 group :development, :test do
   gem 'awesome_print', '~> 1.8.0'
   gem 'bullet', '~> 6.1.0'
-  gem 'dotenv-rails', '~> 2.7.6'
   gem 'factory_bot_rails', '~> 6.1.0'
   gem 'ffaker', '~> 2.17.0'
   gem 'pry-rails', '~> 0.3.9'
@@ -28,14 +28,14 @@ group :development, :test do
 end
 
 group :development do
-  gem 'database_consistency', '~> 0.8.8'
-  gem 'lefthook', '~> 0.7.2'
+  gem 'database_consistency', '~> 0.8.8', require: false
+  gem 'lefthook', '~> 0.7.2', require: false
   gem 'listen', '~> 3.2.1'
   gem 'rubocop', '~> 0.93.1'
   gem 'rubocop-performance', '~> 1.8.1'
   gem 'rubocop-rails', '~> 2.8.1'
   gem 'rubocop-rspec', '~> 1.44.1'
-  gem 'solargraph', '~> 0.39.17'
+  gem 'solargraph', '~> 0.39.17', require: false
 end
 
 group :test do
@@ -43,5 +43,4 @@ group :test do
   gem 'json_matchers', '~> 0.11.1'
   gem 'shoulda-matchers', '~> 4.4.1'
   gem 'simplecov', '~> 0.19.0'
-  gem 'trailblazer-test', '~> 0.1.1'
 end

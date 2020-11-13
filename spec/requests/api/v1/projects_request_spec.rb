@@ -3,13 +3,12 @@ RSpec.describe 'Api::V1::Projects', type: :request do
 
   let(:user_params) { attributes_for(:user) }
   let!(:user) { create(:user, **user_params) }
-  let(:headers) { call(Session::Create, params: user_params)[:tokens] }
+  let(:headers) { Api::V1::Session::Operation::Create.call(params: user_params)[:headers] }
 
   describe 'GET /api/v1/projects' do
     include Docs::V1::Projects::Index
 
     before do
-      create_list(:project, 3, user: user)
       get api_v1_projects_path, headers: headers, as: :json
     end
 

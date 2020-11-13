@@ -3,7 +3,8 @@ require 'shrine/storage/file_system'
 require 'shrine/storage/s3'
 require 'shrine/storage/memory'
 
-if Rails.env.production?
+case Rails.env
+when 'production'
   s3_options = {
     bucket: Rails.application.credentials.aws[:bucket],
     region: Rails.application.credentials.aws[:region],
@@ -14,12 +15,12 @@ if Rails.env.production?
     cache: Shrine::Storage::S3.new(prefix: 'cache', **s3_options),
     store: Shrine::Storage::S3.new(**s3_options),
   }
-elsif Rails.env.development?
+when 'development'
   Shrine.storages = {
     cache: Shrine::Storage::FileSystem.new('storage', prefix: 'uploads/cache'),
     store: Shrine::Storage::FileSystem.new('storage', prefix: 'uploads'),
   }
-else
+when 'test'
   Shrine.storages = {
     cache: Shrine::Storage::Memory.new,
     store: Shrine::Storage::Memory.new

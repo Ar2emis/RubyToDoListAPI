@@ -18,16 +18,17 @@ jobs:
     docker:
       - image: cimg/ruby:2.7-node
       - image: circleci/postgres:13
+        auth:
+          username: $POSTGRES_USER
+          password: $POSTGRES_DB
         environment:
-          POSTGRES_USER: todo_list
-          POSTGRES_DB: todo_list_test
-          POSTGRES_PASSWORD: "todo_list"
+          POSTGRES_USER: $POSTGRES_USER
+          POSTGRES_DB: $POSTGRES_DB
+          POSTGRES_PASSWORD: $POSTGRES_PASSWORD
     environment:
-      BUNDLE_JOBS: "3"
-      BUNDLE_RETRY: "3"
-      PGHOST: 127.0.0.1
-      DATABASE_USERNAME: todo_list
-      DATABASE_PASSWORD: "todo_list"
+      POSTGRES_USER: $POSTGRES_USER
+      POSTGRES_DB: $POSTGRES_DB
+      POSTGRES_PASSWORD: $POSTGRES_PASSWORD
       RAILS_ENV: test
     steps:
       - checkout 

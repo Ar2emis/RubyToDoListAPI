@@ -3,14 +3,14 @@ RSpec.describe 'Api::V1::Comments', type: :request do
 
   let(:user_params) { attributes_for(:user) }
   let!(:user) { create(:user, **user_params) }
-  let(:headers) { call(Session::Create, params: user_params)[:tokens] }
+  let(:headers) { Api::V1::Session::Operation::Create.call(params: user_params)[:headers] }
 
   describe 'GET /api/v1/tasks/{task_id}/comments' do
     include Docs::V1::Comments::Index
 
+    let(:task) { create(:task, project: create(:project, user: user), comments: create_list(:comment, 3)) }
+
     before do
-      task = create(:task, project: create(:project, user: user))
-      create_list(:comment, 3, task: task)
       get api_v1_task_comments_path(task), headers: headers, as: :json
     end
 
@@ -27,10 +27,9 @@ RSpec.describe 'Api::V1::Comments', type: :request do
     include Docs::V1::Comments::Create
 
     let(:params) { { data: attributes_for(:comment).slice(:body, :image) } }
+    let(:task) { create(:task, project: create(:project, user: user)) }
 
     before do
-      puts params
-      task = create(:task, project: create(:project, user: user))
       post api_v1_task_comments_path(task), params: params, headers: headers
     end
 

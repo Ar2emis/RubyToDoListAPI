@@ -1,11 +1,11 @@
 class CreateTasks < ActiveRecord::Migration[6.0]
   def change
     create_table :tasks do |t|
-      t.string :name
+      t.string :name, null: false
       t.integer :position
       t.boolean :done, default: false
       t.timestamp :due_date
-      t.belongs_to :project, foreign_key: { to_table: :projects }
+      t.references :project, foreign_key: true
 
       t.timestamps
     end

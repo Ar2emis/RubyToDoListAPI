@@ -9,16 +9,13 @@ Rails.application.routes.draw do
       end
 
       resources :projects do
-        resources :tasks, only: [:index, :create]
+        resources :tasks, shallow: true do
+          resources :comments, only: %i[index create destroy]
+          patch '/complete', to: 'tasks#complete'
+          patch '/position', to: 'tasks#position'
+        end
       end
-      resources :tasks, only: [:show, :update, :destroy] do
-        resources :comments, only: [:index, :create]
-        patch '/complete', to: 'tasks#complete'
-        patch '/position', to: 'tasks#position'
-      end
-      resources :comments, only: [:destroy]
-
-      get '/docs', to: 'documentations#docs'
     end
   end
+  root 'documentations#docs'
 end
