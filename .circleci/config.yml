@@ -28,10 +28,7 @@ jobs:
       POSTGRES_PASSWORD: $POSTGRES_PASSWORD
     steps:
       - checkout 
-      - ruby/install-deps 
-      - run:
-          name: Wait for DB
-          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+      - ruby/install-deps
       - run:
           name: Database setup
           command: bundle exec rails db:schema:load --trace

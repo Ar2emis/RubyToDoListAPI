@@ -9,7 +9,7 @@ RSpec.describe Api::V1::Task::Contract::Position do
 
   describe '#validate' do
     context 'when params is valid' do
-      let(:task_params) { { position: Api::V1::Task::Operation::Position::DOWN } }
+      let(:task_params) { { position: Api::V1::Task::Service::Reprioritate::DOWN } }
 
       it 'returns true' do
         expect(contract.validate(task_params)).to eq true

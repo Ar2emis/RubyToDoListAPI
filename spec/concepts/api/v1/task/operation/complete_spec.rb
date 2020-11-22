@@ -1,29 +1,21 @@
 RSpec.describe Api::V1::Task::Operation::Complete do
   describe '#call' do
-    let(:user_params) { attributes_for(:user) }
-    let!(:user) { create(:user, **user_params) }
-    let(:request) { test_request(user_params: user_params) }
+    let(:user) { create(:user) }
     let(:task) { create(:task, project: create(:project, user: user)) }
 
     context 'when task exists' do
       let(:task_params) { { task_id: task.id } }
 
       it 'success' do
-        expect(described_class.call(params: task_params, request: request)).to be_success
+        expect(described_class.call(params: task_params, current_user: user)).to be_success
       end
     end
 
-    context 'when task does not exist' do
+    context 'when user does not own task' do
       let(:task_params) { { id: -1 } }
 
-      it 'returns model error' do
-        expect(described_class.call(params: task_params, request: request)['result.policy.existance']).to be_failure
-      end
-    end
-
-    context 'when policy is invalid' do
       it 'returns policy error' do
-        expect(described_class.call(params: {}, request: test_request)['result.policy.default']).to be_failure
+        expect(described_class.call(params: task_params, current_user: user)['result.policy.default']).to be_failure
       end
     end
   end

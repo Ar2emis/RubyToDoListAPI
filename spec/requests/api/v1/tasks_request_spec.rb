@@ -43,7 +43,7 @@ RSpec.describe 'Api::V1::Tasks', type: :request do
   describe 'PATCH /api/v1/task/{id}' do
     include Docs::V1::Tasks::Update
     let(:task) { create(:task, project: create(:project, user: user)) }
-    let(:params) { { data: attributes_for(:task).slice(:name, :due_date) } }
+    let(:params) { attributes_for(:task).slice(:name, :due_date) }
 
     before do
       patch api_v1_task_path(task), params: params, headers: headers, as: :json
@@ -60,7 +60,7 @@ RSpec.describe 'Api::V1::Tasks', type: :request do
     end
 
     context 'when params is invalid' do
-      let(:params) { { data: { name: '' } } }
+      let(:params) { { name: '' } }
 
       it 'returns http unprocessable entity status' do
         expect(response).to have_http_status(:unprocessable_entity)
@@ -75,7 +75,7 @@ RSpec.describe 'Api::V1::Tasks', type: :request do
   describe 'POST /api/v1/projects/{project_id}/tasks' do
     include Docs::V1::Tasks::Create
     let(:project) { create(:project, user: user) }
-    let(:params) { { data: attributes_for(:task).slice(:name) } }
+    let(:params) { attributes_for(:task).slice(:name) }
 
     before do
       post api_v1_project_tasks_path(project), params: params, headers: headers, as: :json
@@ -147,7 +147,7 @@ RSpec.describe 'Api::V1::Tasks', type: :request do
   describe 'PATCH /api/v1/task/{task_id}/position' do
     include Docs::V1::Tasks::Position
     let(:task) { create(:task, project: create(:project, user: user, tasks: create_list(:task, 3))) }
-    let(:params) { { data: { position: Api::V1::Task::Operation::Position::DOWN } } }
+    let(:params) { { position: Api::V1::Task::Service::Reprioritate::DOWN } }
 
     before do
       patch api_v1_task_position_path(task), params: params, headers: headers, as: :json
@@ -164,7 +164,7 @@ RSpec.describe 'Api::V1::Tasks', type: :request do
     end
 
     context 'when params is invalid' do
-      let(:params) { { data: { position: task.project.tasks.count } } }
+      let(:params) { { position: -1 } }
 
       it 'returns http unprocessable entity status' do
         expect(response).to have_http_status(:unprocessable_entity)

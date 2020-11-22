@@ -10,10 +10,6 @@ module Docs
         end
       end
 
-      document :update do
-        action 'Refresh session'
-      end
-
       document :create do
         action 'Create session'
       end

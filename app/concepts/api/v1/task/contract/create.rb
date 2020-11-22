@@ -1,9 +1,14 @@
-class Api::V1::Task::Contract::Create < ApplicationContract
-  property :name
+module Api::V1
+  module Task::Contract
+    class Create < ApplicationContract
+      property :name
+      property :project_id
 
-  validation do
-    params do
-      required(:name).filled(:string)
+      validation do
+        params do
+          required(:name).filled(:string)
+        end
+      end
     end
   end
 end

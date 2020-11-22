@@ -1,14 +1,13 @@
-class Api::V1::Task::Operation::Index < Trailblazer::Operation
-  step Policy::Guard(Api::V1::Guard::Access.new), fail_fast: true
-  step Policy::Guard(Api::V1::Guard::ProjectExists.new, name: :existance), fail_fast: true
-  step :model
-  step :result
+module Api::V1
+  module Task::Operation
+    class Index < Trailblazer::Operation
+      step Policy::Guard(Api::V1::Guard::Project::Parent), fail_fast: true
+      step Model(::Project, :find, :project_id), fail_fast: true
+      step :result
 
-  def model(ctx, params:, **)
-    ctx[:model] = Project.find_by(id: params[:project_id])
-  end
-
-  def result(ctx, model:, **)
-    ctx[:result] = model.tasks
+      def result(ctx, model:, **)
+        ctx[:result] = model.tasks
+      end
+    end
   end
 end

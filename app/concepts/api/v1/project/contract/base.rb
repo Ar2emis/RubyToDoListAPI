@@ -1,19 +1,22 @@
-class Api::V1::Project::Contract::Base < ApplicationContract
-  delegate :user_id, to: :model
-  property :name
-  property :user_id, virtual: true
+module Api::V1
+  module Project::Contract
+    class Base < ApplicationContract
+      property :name
+      property :user
 
-  validation do
-    config.messages.backend = :i18n
-    config.messages.namespace = :project
+      validation do
+        config.messages.backend = :i18n
+        config.messages.namespace = :project
 
-    params do
-      required(:name).filled(:string)
-      required(:user_id).filled
-    end
+        params do
+          required(:name).filled(:string)
+          required(:user)
+        end
 
-    rule(:name, :user_id) do
-      key.failure(:exists?) if Project.exists?(user_id: values[:user_id], name: values[:name])
+        rule(:name, :user) do
+          key.failure(:exists?) if ::Project.exists?(user: values[:user], name: values[:name])
+        end
+      end
     end
   end
 end

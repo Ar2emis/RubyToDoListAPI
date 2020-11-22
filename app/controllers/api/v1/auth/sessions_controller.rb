@@ -1,16 +1,31 @@
-class Api::V1::Auth::SessionsController < Api::V1::Auth::AuthController
-  def create
-    endpoint operation: Api::V1::Session::Operation::Create, options: options, before_response: before_response,
-             renderer_options: { serializer: UserSerializer, status: :ok }
-  end
+module Api::V1
+  module Auth
+    class SessionsController < Api::V1::Auth::AuthController
+      def create
+        endpoint operation: Api::V1::Session::Operation::Create, before_response: before_response,
+                 renderer_options: { serializer: UserSerializer, status: :ok }, different_cases: create_cases,
+                 different_handler: create_handler
+      end
 
-  def update
-    endpoint operation: Api::V1::Session::Operation::Update, options: options, before_response: before_response,
-             renderer_options: { serializer: UserSerializer, status: :created }
-  end
+      def destroy
+        authorize_access_request!
+        endpoint operation: Api::V1::Session::Operation::Destroy, options: { payload: payload },
+                 different_handler: destroy_handler
+      end
 
-  def destroy
-    endpoint operation: Api::V1::Session::Operation::Destroy, options: options, renderer_options: { status: :ok },
-             different_handler: destroy_handler
+      private
+
+      def create_cases
+        { invalid: ->(result) { result.failure? } }
+      end
+
+      def create_handler
+        { invalid: ->(_, **) { not_authorized } }
+      end
+
+      def destroy_handler
+        { success: ->(_, **) { render json: { success: true }, status: :ok } }
+      end
+    end
   end
 end

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   namespace :api do
     api_version(module: 'V1', path: { value: 'v1' }, default: true) do
       namespace :auth do
-        post '/', to: 'registrations#create'
+        post '/', to: 'users#create'
         post '/sign_in', to: 'sessions#create'
         patch '/refresh', to: 'sessions#update'
         delete 'sign_out', to: 'sessions#destroy'

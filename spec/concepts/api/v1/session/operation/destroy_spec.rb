@@ -1,21 +1,14 @@
 RSpec.describe Api::V1::Session::Operation::Destroy do
   describe '#call' do
     context 'when params is valid' do
-      let(:user_params) do
-        attributes = attributes_for(:user)
-        create(:user, **attributes)
-        attributes
+      before do
+        session = instance_double(JWTSessions::Session)
+        allow(session).to receive(:flush_by_access_payload).and_return(true)
+        allow(JWTSessions::Session).to receive(:new).and_return(session)
       end
-      let(:request) { test_request(user_params: user_params) }
 
       it 'success' do
-        expect(described_class.call(params: {}, request: request)).to be_success
-      end
-    end
-
-    context 'when params is invalid' do
-      it 'returns policy error' do
-        expect(described_class.call(params: {}, request: test_request)['result.policy.default']).to be_failure
+        expect(described_class.call(payload: {})).to be_success
       end
     end
   end

@@ -1,15 +1,13 @@
-class Api::V1::Task::Operation::Destroy < Trailblazer::Operation
-  step Policy::Guard(Api::V1::Guard::Access.new), fail_fast: true
-  step Policy::Guard(Api::V1::Guard::TaskExists.new, name: :existance), fail_fast: true
-  step Model(Task, :find_by)
-  step :reprioritate
-  step :destroy
+module Api::V1
+  module Task::Operation
+    class Destroy < Trailblazer::Operation
+      step Model(::Task, :find_by), fail_fast: true
+      step Policy::Guard(Api::V1::Guard::Task::Base), fail_fast: true
+      step :destroy
 
-  def reprioritate(_, model:, **)
-    model.remove_from_list
-  end
-
-  def destroy(_, model:, **)
-    model.destroy
+      def destroy(_, model:, **)
+        model.destroy
+      end
+    end
   end
 end

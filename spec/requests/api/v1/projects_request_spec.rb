@@ -41,7 +41,7 @@ RSpec.describe 'Api::V1::Projects', type: :request do
   describe 'PATCH /api/v1/projects/{id}' do
     include Docs::V1::Projects::Update
     let(:project) { create(:project, user: user) }
-    let(:params) { { data: attributes_for(:project) } }
+    let(:params) { attributes_for(:project) }
 
     before do
       patch api_v1_project_path(project), params: params, headers: headers, as: :json
@@ -58,7 +58,7 @@ RSpec.describe 'Api::V1::Projects', type: :request do
     end
 
     context 'when params is invalid' do
-      let(:params) { { data: { name: '' } } }
+      let(:params) { { name: '' } }
 
       it 'returns http unprocessable entity status' do
         expect(response).to have_http_status(:unprocessable_entity)
@@ -72,7 +72,7 @@ RSpec.describe 'Api::V1::Projects', type: :request do
 
   describe 'POST /api/v1/projects' do
     include Docs::V1::Projects::Create
-    let(:params) { { data: attributes_for(:project) } }
+    let(:params) { attributes_for(:project) }
 
     before do
       post api_v1_projects_path, params: params, headers: headers, as: :json
@@ -89,7 +89,7 @@ RSpec.describe 'Api::V1::Projects', type: :request do
     end
 
     context 'when params is invalid' do
-      let(:params) { { data: { name: '' } } }
+      let(:params) { { name: '' } }
 
       it 'returns http unprocessable entity status' do
         expect(response).to have_http_status(:unprocessable_entity)

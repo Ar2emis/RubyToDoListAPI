@@ -7,6 +7,8 @@ en:
             exists?: already exists
           password_confirmation:
             match?: doesn't match password
+          password_match:
+            match?: invalid
       project:
         rules:
           name:

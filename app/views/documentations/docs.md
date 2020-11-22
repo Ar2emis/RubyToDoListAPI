@@ -9,16 +9,15 @@
 ### List of comments [GET /api/v1/tasks/{task_id}/comments]
 
 + Parameters
-    + task_id: `2125` (number, required)
+    + task_id: `1378` (number, required)
 
 + Request returns comments
-**GET**&nbsp;&nbsp;`/api/v1/tasks/2125/comments`
+**GET**&nbsp;&nbsp;`/api/v1/tasks/1378/comments`
 
     + Headers
 
             Accept: application/json
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDQ1MzU3ODIsInVzZXJfaWQiOjM3MjcsInVpZCI6ImMwN2ZiNzU1LWRmZTgtNDE4OS04MDAwLTJiNmY1OTM5YTgxNCJ9.tj3sm8XC50qJfWNlWBj2mjBi1M4vKfbs6vvJC89U0GY
-            X-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDUxMzY5ODIsInVzZXJfaWQiOjM3MjcsInVpZCI6ImYxNGFmZDhhLTgxMGQtNDgzYi05ZjhkLTdjNTNhODVhODZkNyJ9.0cxKV58xY4ldVh2yqEkb372GupxqDu_NWipiuBUi1-U
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDYwOTAxNTUsInVzZXJfaWQiOjI2NzUsInVpZCI6IjQ4MTIwNTI2LWI1YWUtNDAwZC05ZDU2LWU5ZjhhZTk1MDRiMSIsInJ1aWQiOiJiN2YyNTAxMS02NDg5LTRhMzItYTFiZi1iYzdlZmQ5NTZiNjcifQ.hCi8HmX03eInYIlkEvYCda0PIFwE5-79XR01WEpn0gg
             Content-Type: application/json
 
 + Response 200
@@ -32,27 +31,27 @@
             {
               "data": [
                 {
-                  "id": "276",
-                  "type": "comment",
-                  "attributes": {
-                    "body": "Est qui vero et harum id ad tempore.",
-                    "image": "memory://03a0f2f8e3693061a632180e8ecfba98.jpg"
-                  }
-                },
-                {
                   "id": "277",
                   "type": "comment",
                   "attributes": {
-                    "body": "Ratione iste assumenda ex eum.",
-                    "image": "memory://49d1a4015ac28f2ba65f845b679e392d.jpg"
+                    "body": "Non et ipsa reiciendis veritatis blanditiis.",
+                    "image": "memory://d7076c38ea9f9d7094199ff534a5c22f.jpg"
                   }
                 },
                 {
                   "id": "278",
                   "type": "comment",
                   "attributes": {
-                    "body": "Dolorem accusamus aperiam officia maxime nisi eum et.",
-                    "image": "memory://d8a2e5ce3fc32927dc9b79e1547c1498.jpg"
+                    "body": "Quia ad est libero dolore sunt dolorem mollitia.",
+                    "image": "memory://d00ac74cd3bee96b68a2d59ad48bab2b.jpg"
+                  }
+                },
+                {
+                  "id": "279",
+                  "type": "comment",
+                  "attributes": {
+                    "body": "Adipisci eos aut in expedita.",
+                    "image": "memory://315c48751fcf8a49c7d1710e90b4f6fc.jpg"
                   }
                 }
               ]
@@ -61,34 +60,22 @@
 ### Create a comment [POST /api/v1/tasks/{task_id}/comments]
 
 + Parameters
-    + task_id: `2126` (number, required)
+    + task_id: `1379` (number, required)
 
 + Request returns comment
-**POST**&nbsp;&nbsp;`/api/v1/tasks/2126/comments`
+**POST**&nbsp;&nbsp;`/api/v1/tasks/1379/comments`
 
     + Headers
 
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDQ1MzU3ODMsInVzZXJfaWQiOjM3MjgsInVpZCI6ImI3MDJhN2YxLWVkMmEtNDU0Mi1iYjA2LWVkYjNkMzdjZjk4MSJ9.sUm0WiOXPtYHqdJSfs3x7c48mqBhIbcDhErmC-7JeH4
-            X-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDUxMzY5ODMsInVzZXJfaWQiOjM3MjgsInVpZCI6ImE5NWE2Mzg3LWE5M2UtNDdkNC05ODNiLWM3NjRlM2ExNTZmNiJ9.Te7dWcQuwwXqD3MLbetH2F5_D_837njW_v3flzGyeZc
-            Content-Type: multipart/form-data; boundary=----------XnJLe9ZIbbGUYtzPQJ16u1
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDYwOTAxNTYsInVzZXJfaWQiOjI2NzksInVpZCI6ImYzNjI0YjQxLWU1YzYtNDQ5Mi1iMTUxLTBhNDQwOTEzMzljNCIsInJ1aWQiOiIyZDQ3YzgyNy0xYmFiLTRmOTEtYmVhZi02MTNjYWI0NDQ4NDAifQ.7kG59jU8ml3XRg9aYLk37HNsuV4maQlCB883wdWtKkg
+            Content-Type: application/x-www-form-urlencoded
 
     + Body
 
-            {
-              "data": {
-                "body": "Et similique necessitatibus quibusdam est non ut.",
-                "image": {
-                  "filename": "image.jpg",
-                  "type": "image/jpeg",
-                  "name": "data[image]",
-                  "tempfile": "#<File:0x0000561774ac65e8>",
-                  "head": "Content-Disposition: form-data; name=\"data[image]\"; filename=\"image.jpg\"\r\nContent-Type: image/jpeg\r\nContent-Length: 296059\r\n"
-                }
-              }
-            }
+            body=Provident+in+aliquam+quas+aut+dolore+alias+veniam+consequatur.
 
-+ Response 422
++ Response 201
 
     + Headers
 
@@ -97,26 +84,28 @@
     + Body
 
             {
-              "errors": {
-                "image": [
-                  "type must be one of: image/jpeg, image/png"
-                ]
+              "data": {
+                "id": "280",
+                "type": "comment",
+                "attributes": {
+                  "body": "Provident in aliquam quas aut dolore alias veniam consequatur.",
+                  "image": null
+                }
               }
             }
 
 ### Destroy a comment [DELETE /api/v1/comments/{id}]
 
 + Parameters
-    + id: `279` (number, required)
+    + id: `281` (number, required)
 
 + Request returns http no content status
-**DELETE**&nbsp;&nbsp;`/api/v1/comments/279`
+**DELETE**&nbsp;&nbsp;`/api/v1/comments/281`
 
     + Headers
 
             Accept: application/json
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDQ1MzU3ODMsInVzZXJfaWQiOjM3MjksInVpZCI6Ijc1MGU1N2FmLTAxODgtNDhmMy1iZmJhLWRmODZjMDkwNjVkMiJ9.4Gi3BGV3EVpmw7JSSQZOQSdTRK3J3dDFKIGNLZoHLyo
-            X-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDUxMzY5ODMsInVzZXJfaWQiOjM3MjksInVpZCI6ImQwMjA0YTRjLWRmMzctNDY1MS05ZjgwLTg0MTFkNTVlMzk0NyJ9.LwjMp2PurTfVRC8yYCfUjxJAC99wpEH2bFGlzlnWtiU
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDYwOTAxNTYsInVzZXJfaWQiOjI2ODAsInVpZCI6Ijc4NjA3MWIyLTM0YzQtNGU3Zi05ZGRiLWYxOWQ1NWVlNzk4MyIsInJ1aWQiOiJiOWVhYTFiYS1iZWZlLTRhNDYtYjdiOS0yZWZmMmJiNzI1ZDgifQ.fQCDi1umcbf67E5rgDsZJQD02Iv5eQFn5SSaScKqwb8
             Content-Type: application/json
 
 + Response 204
@@ -136,8 +125,7 @@
     + Headers
 
             Accept: application/json
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDQ1MzU3ODMsInVzZXJfaWQiOjM3MzAsInVpZCI6ImQ3YjI0MDIxLTI0MzktNDRjYi04ZmMxLTQ5Y2U3YWNkMjZhMSJ9.A_IM8CISjayA3-s-bDGSDxQwMek1tgnhqJWkUSAA6_0
-            X-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDUxMzY5ODMsInVzZXJfaWQiOjM3MzAsInVpZCI6IjcyZGQ0MWM2LTc3MDQtNDE2YS1iNzc3LTdjY2FiM2IyMzZmNyJ9.fKzJgCU2FrvUhSMCnXqCysTTwv1SeNloIqgiqPQjJaM
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDYwOTAxNTYsInVzZXJfaWQiOjI2ODEsInVpZCI6ImE2MzcxYWVjLWY5NWEtNDYzNC05ODJjLWYwMTVkZGVkYmQ1YiIsInJ1aWQiOiJiN2M3MzgzOC00ZTcwLTQ4MjQtYWY5NC0yNTMyMmIyMDlhY2YifQ.mfkTRNqc4aRiwGQrAhaZsRGgheFEOXykus3Qh70_pCo
             Content-Type: application/json
 
 + Response 200
@@ -150,91 +138,22 @@
 
             {
               "data": [
-                {
-                  "id": "3098",
-                  "type": "project",
-                  "attributes": {
-                    "name": "The Hills"
-                  },
-                  "relationships": {
-                    "tasks": {
-                      "data": [
             
-                      ]
-                    },
-                    "user": {
-                      "data": {
-                        "id": "3730",
-                        "type": "user"
-                      }
-                    }
-                  },
-                  "links": {
-                    "self": "http://localhost:3000/api/v1/projects/3098"
-                  }
-                },
-                {
-                  "id": "3099",
-                  "type": "project",
-                  "attributes": {
-                    "name": "Tennessee Whiskey"
-                  },
-                  "relationships": {
-                    "tasks": {
-                      "data": [
-            
-                      ]
-                    },
-                    "user": {
-                      "data": {
-                        "id": "3730",
-                        "type": "user"
-                      }
-                    }
-                  },
-                  "links": {
-                    "self": "http://localhost:3000/api/v1/projects/3099"
-                  }
-                },
-                {
-                  "id": "3100",
-                  "type": "project",
-                  "attributes": {
-                    "name": "No Role Modelz"
-                  },
-                  "relationships": {
-                    "tasks": {
-                      "data": [
-            
-                      ]
-                    },
-                    "user": {
-                      "data": {
-                        "id": "3730",
-                        "type": "user"
-                      }
-                    }
-                  },
-                  "links": {
-                    "self": "http://localhost:3000/api/v1/projects/3100"
-                  }
-                }
               ]
             }
 
 ### Project details [GET /api/v1/projects/{id}]
 
 + Parameters
-    + id: `3101` (number, required)
+    + id: `1919` (number, required)
 
 + Request returns project
-**GET**&nbsp;&nbsp;`/api/v1/projects/3101`
+**GET**&nbsp;&nbsp;`/api/v1/projects/1919`
 
     + Headers
 
             Accept: application/json
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDQ1MzU3ODMsInVzZXJfaWQiOjM3MzEsInVpZCI6IjI3MTUxNjk4LTYxNDEtNGM3OC1hYjliLTBhMGNjMjBmOWZiOCJ9.radwYy-_y6uYEYPXLeapOpKRBB_WPw767rpu5XD3uoA
-            X-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDUxMzY5ODMsInVzZXJfaWQiOjM3MzEsInVpZCI6ImM0NDA4YjA4LTQ4YjYtNDk3OC1hYzMyLWRmNTdkNWY3OGM1NCJ9.K2ExjCiUNnYtJgEhKkKC7I4bubzlm_nwFZH4KJkTGJc
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDYwOTAxNTYsInVzZXJfaWQiOjI2ODIsInVpZCI6ImU2OTMyZjUyLTEzN2MtNDc5Yy05MTBkLTc4MWI0MTMwNmUwMCIsInJ1aWQiOiI4YzZlYWI0ZS05NjgyLTQxNmQtYjljMC1kMTMzYTkxMzFjODAifQ.Y4aioIbTvaNJ9vhLJCFTnAloGaBC9NQXRtNvV06GLLA
             Content-Type: application/json
 
 + Response 200
@@ -247,10 +166,10 @@
 
             {
               "data": {
-                "id": "3101",
+                "id": "1919",
                 "type": "project",
                 "attributes": {
-                  "name": "New Americana"
+                  "name": "Traveller"
                 },
                 "relationships": {
                   "tasks": {
@@ -260,13 +179,13 @@
                   },
                   "user": {
                     "data": {
-                      "id": "3731",
+                      "id": "2682",
                       "type": "user"
                     }
                   }
                 },
                 "links": {
-                  "self": "http://localhost:3000/api/v1/projects/3101"
+                  "self": "http://localhost:3000/api/v1/projects/1919"
                 }
               }
             }
@@ -274,24 +193,21 @@
 ### Update a object [PATCH /api/v1/projects/{id}]
 
 + Parameters
-    + id: `3102` (number, required)
+    + id: `1920` (number, required)
 
 + Request returns project
-**PATCH**&nbsp;&nbsp;`/api/v1/projects/3102`
+**PATCH**&nbsp;&nbsp;`/api/v1/projects/1920`
 
     + Headers
 
             Accept: application/json
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDQ1MzU3ODMsInVzZXJfaWQiOjM3MzIsInVpZCI6ImNkMDE5YjBkLTAyMDUtNDFmZi1hNmQwLWU3YTk4Y2M4YjIwMSJ9.ueAS7DVWwSfuCqoY8pHyyisG25RkZTbHRMPMH2uP_Yg
-            X-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDUxMzY5ODMsInVzZXJfaWQiOjM3MzIsInVpZCI6ImUzZjdjYTQ0LWU1NzAtNDliMi05MWIxLTMxNjk4N2NhMjg0ZCJ9.sSTw5yTMuHJP69j-wwQ1wh015WmN52Z7LhsHnVv-RPg
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDYwOTAxNTYsInVzZXJfaWQiOjI2ODMsInVpZCI6IjNhZThhNjk4LTY5ZGItNGUxNS05NjIyLWRhOGVkYTk3ODRiYyIsInJ1aWQiOiI2OTllNGI1Mi1kOWUyLTQ5MGMtYjU1ZC1kZmJhMjY2ZDMwZDAifQ.6TXMXUyFxU9xNoOqPQ9eChm8veIhLAG7_bm4VQe01RA
             Content-Type: application/json
 
     + Body
 
             {
-              "data": {
-                "name": "Renegades"
-              }
+              "name": "Can't Get Enough Of Myself"
             }
 
 + Response 201
@@ -304,10 +220,10 @@
 
             {
               "data": {
-                "id": "3102",
+                "id": "1920",
                 "type": "project",
                 "attributes": {
-                  "name": "Renegades"
+                  "name": "Can't Get Enough Of Myself"
                 },
                 "relationships": {
                   "tasks": {
@@ -317,13 +233,13 @@
                   },
                   "user": {
                     "data": {
-                      "id": "3732",
+                      "id": "2683",
                       "type": "user"
                     }
                   }
                 },
                 "links": {
-                  "self": "http://localhost:3000/api/v1/projects/3102"
+                  "self": "http://localhost:3000/api/v1/projects/1920"
                 }
               }
             }
@@ -337,16 +253,13 @@
     + Headers
 
             Accept: application/json
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDQ1MzU3ODMsInVzZXJfaWQiOjM3MzMsInVpZCI6ImQxZDYxODM2LTkzNDAtNGQxZS1hOTUyLThmMjQ1ZDJmMDYwNyJ9.jHqtwoJvtSka0y2P0TIMgF4F36cdxnJZQ593Pt4jXeI
-            X-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDUxMzY5ODMsInVzZXJfaWQiOjM3MzMsInVpZCI6IjQxMWM3ZjMxLTZjZGItNGI4Zi04ZTgxLTQ5YmE4OWU2MjFkNiJ9.hpghfmPKG35o59MoDWloV-O6afLn38ZTPkI8leEyeAU
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDYwOTAxNTYsInVzZXJfaWQiOjI2ODQsInVpZCI6ImE4ZTc4M2Y3LWM5MzEtNDgwMC05MDczLTVmNTU0OWI2ZTMwYyIsInJ1aWQiOiJjNDI3Zjg0Mi0zMzBlLTQwODctODJiNy04ODZhMzExY2ZkYmEifQ.7lYcAaA6TD4x9KxZEk4MNlqqw5b0PwWimfkAZxq7Iuc
             Content-Type: application/json
 
     + Body
 
             {
-              "data": {
-                "name": "Jumpman"
-              }
+              "name": "Ex's & Oh's"
             }
 
 + Response 201
@@ -359,10 +272,10 @@
 
             {
               "data": {
-                "id": "3103",
+                "id": "1921",
                 "type": "project",
                 "attributes": {
-                  "name": "Jumpman"
+                  "name": "Ex's & Oh's"
                 },
                 "relationships": {
                   "tasks": {
@@ -372,13 +285,13 @@
                   },
                   "user": {
                     "data": {
-                      "id": "3733",
+                      "id": "2684",
                       "type": "user"
                     }
                   }
                 },
                 "links": {
-                  "self": "http://localhost:3000/api/v1/projects/3103"
+                  "self": "http://localhost:3000/api/v1/projects/1921"
                 }
               }
             }
@@ -386,16 +299,15 @@
 ### Destroy a project [DELETE /api/v1/projects/{id}]
 
 + Parameters
-    + id: `3104` (number, required)
+    + id: `1922` (number, required)
 
 + Request returns http no content status
-**DELETE**&nbsp;&nbsp;`/api/v1/projects/3104`
+**DELETE**&nbsp;&nbsp;`/api/v1/projects/1922`
 
     + Headers
 
             Accept: application/json
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDQ1MzU3ODMsInVzZXJfaWQiOjM3MzQsInVpZCI6IjY2ZGE0Y2ZkLTRkNDgtNDg1OS05MWE3LTBjMDg4MGIwYmRhZCJ9.9-C4KPsvy2X7xWJDMgXamoqJMjYPNs0Y4WCzuAvImLs
-            X-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDUxMzY5ODMsInVzZXJfaWQiOjM3MzQsInVpZCI6IjExMDg4YjZkLWJlOTYtNGM5Yy05OGEzLWQ5YjEwNjZmNmU0NCJ9.ER1NSNsnQk1_cebtr7PjGroI_TSoG74XjSOyLLeSXxE
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDYwOTAxNTYsInVzZXJfaWQiOjI2ODUsInVpZCI6ImMxMGM3MTZhLTJjMjctNDdmNy1iMGM1LTVlOWM0NTRkOTYyZSIsInJ1aWQiOiIzOTNlODM1Zi0zZWYyLTQ3NDItYTNmZC00YjNiMmE3OTZhMTkifQ.bWJCBh7mjgAvY809KSbSK-j0f8xmzy6fqm_URigFpTQ
             Content-Type: application/json
 
 + Response 204
@@ -420,31 +332,30 @@
     + Body
 
             {
-              "username": "santina",
-              "password": "suzfk_pLkDvD",
-              "password_confirmation": "suzfk_pLkDvD"
+              "username": "edda_ryan",
+              "password": "ALynaBKqz8_r6DM",
+              "password_confirmation": "ALynaBKqz8_r6DM"
             }
 
 + Response 201
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDQ1MzU3ODIsInVzZXJfaWQiOjM3MjMsInVpZCI6ImNjMTJhYWE1LTk4NWMtNGQ1Mi05OGE1LTEyMmM0YzlmZDgyMCJ9.0UwYkTT5szigW_VoeH3W6YNP2A5_Udygq3Nudx5XJCA
-            X-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDUxMzY5ODIsInVzZXJfaWQiOjM3MjMsInVpZCI6IjMwNDRiYWJhLWE4MjMtNDZiZC1iOTRiLTc3ZGEyNTI4NTVkMiJ9.VubzWWohFkEcei9S3NBuM2wvKEPlOmIXOZwr6s0jLhI
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDYwOTAxNTUsInVzZXJfaWQiOjI2NzIsInVpZCI6IjhiZTgyYjM4LTIyNmUtNDkyNi04ZGQzLTM1ZDE5ZTUyY2NhOCIsInJ1aWQiOiIwZWEwMzExNC00ZWIwLTRkOTktYTZkNy0zNzdkOWNjMDY2MDIifQ.2svPLnOdjIMUXgDnaPr5BGZshgkF8nEoJ9zmJx90UEA
             Content-Type: application/json; charset=utf-8
 
     + Body
 
             {
               "data": {
-                "id": "3723",
+                "id": "2672",
                 "type": "user",
                 "attributes": {
-                  "username": "santina",
+                  "username": "edda_ryan",
                   "provider": null,
                   "uid": null,
-                  "created_at": "2020-11-04T23:23:02.736Z",
-                  "updated_at": "2020-11-04T23:23:02.736Z"
+                  "created_at": "2020-11-22T23:09:15.610Z",
+                  "updated_at": "2020-11-22T23:09:15.610Z"
                 }
               }
             }
@@ -469,50 +380,30 @@
     + Body
 
             {
-              "username": "laila",
-              "password": "6vu7k0bid"
+              "username": "sharron_bogan",
+              "password": "WCbuztId3c"
             }
 
 + Response 200
 
     + Headers
 
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDQ1MzU3ODIsInVzZXJfaWQiOjM3MjQsInVpZCI6IjhlMGNhZjVlLTIzNzYtNGM2OC1hOTk3LTA1ZmI3MTRjZTg2NCJ9.iLbhKoI0v_O51BgOCJopCk6tfVXWkx7uYjrusihr0Fg
-            X-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDUxMzY5ODIsInVzZXJfaWQiOjM3MjQsInVpZCI6ImVkN2E5NTkzLTU2YjEtNDg4Yi1iZmNlLWY5ZTQ2M2RiOThiZSJ9.XAGVUaEcuPFowxCk0pJv__g45lmiYqVnGNdkFkoYYaI
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDYwOTAxNTUsInVzZXJfaWQiOjI2NzMsInVpZCI6IjFjNTViMjQyLWIzMGEtNGE2ZC1hYTg4LWQzZTM4YmRlYzVkOCIsInJ1aWQiOiJlZDBiYTZiMy1jMDM3LTQ2MmUtOTVlMi0xNTk5MDNiNDhhOGQifQ._pf8R80NlJad-Er0IxhgXfw8R7QckLzsWz_OfoSS9aI
             Content-Type: application/json; charset=utf-8
 
     + Body
 
             {
               "data": {
-                "id": "3724",
+                "id": "2673",
                 "type": "user",
                 "attributes": {
-                  "username": "laila",
+                  "username": "sharron_bogan",
                   "provider": null,
                   "uid": null
                 }
               }
             }
-
-### Refresh session [PATCH /api/v1/auth/refresh]
-
-
-+ Request returns new access token
-**PATCH**&nbsp;&nbsp;`/api/v1/auth/refresh`
-
-    + Headers
-
-            Accept: application/json
-            X-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDUxMzY5ODIsInVzZXJfaWQiOjM3MjUsInVpZCI6IjhiNzI4MzNlLWIyODgtNDQwNi04NzdlLWU3MGEwMWZlMWJiZSJ9.dA13xGpKbMNyA1Qoa9TbYs7zEIlOfBsSUM4tUBtCJY4
-            Content-Type: application/json
-
-+ Response 201
-
-    + Headers
-
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDQ1MzU3ODIsInVzZXJfaWQiOjM3MjUsInVpZCI6ImQ5NDE0ZjU2LTYxYmEtNDJkNi05OGFmLTIzYTMwZTVlNzgyZSJ9.voqWju8uyiX0yw8xaa2fWZdcYE-AUbNz3YZoWdPzmO8
-            Content-Type: text/plain; charset=utf-8
 
 ### Destroy session [DELETE /api/v1/auth/sign_out]
 
@@ -523,7 +414,7 @@
     + Headers
 
             Accept: application/json
-            X-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDUxMzY5ODIsInVzZXJfaWQiOjM3MjYsInVpZCI6ImI2YWMzNzliLWQ2MzEtNDM0OC04MDA1LTU0MDExMDVlMGEzYiJ9.smg6DSelABduGyE221tvm1_E-RHERT9MuEioV0nzZ48
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDYwOTAxNTUsInVzZXJfaWQiOjI2NzQsInVpZCI6IjVlYjgwYmIwLTQyNDEtNDhmYy05ODM5LTY1ZjkxZTcyODY2NyIsInJ1aWQiOiIyYzc3MzQ5Ni1kNDU3LTRmYWUtODI1ZS04MDQ1ZTRlMDYyMDEifQ.WPgyvf09Vo0_zhnrgPLNH1LYMB-Qe3CtmoDHztfZv8o
             Content-Type: application/json
 
 + Response 200
@@ -547,16 +438,15 @@
 ### List of tasks [GET /api/v1/projects/{project_id}/tasks]
 
 + Parameters
-    + project_id: `3105` (number, required)
+    + project_id: `1926` (number, required)
 
 + Request returns tasks
-**GET**&nbsp;&nbsp;`/api/v1/projects/3105/tasks`
+**GET**&nbsp;&nbsp;`/api/v1/projects/1926/tasks`
 
     + Headers
 
             Accept: application/json
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDQ1MzU3ODMsInVzZXJfaWQiOjM3MzUsInVpZCI6IjViNTg4ODE0LTEzMjEtNGQwMS05M2RhLWI5ZDQwZTMwZmQzMCJ9.v2PFCQoqpkzbsBDd6y5t7cJn49poPwn53GnHZLPKntE
-            X-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDUxMzY5ODMsInVzZXJfaWQiOjM3MzUsInVpZCI6IjM0MDdhYzk1LTJkNzAtNGU5MC04MGY5LWJiNTE4ZDRiZmE2MyJ9.JcZ5wNXELrgq8ouEx_ZzyXHg-wYkaP_Lt8Tlymhm8cI
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDYwOTAxNTYsInVzZXJfaWQiOjI2ODYsInVpZCI6IjUyMWE2OWQ1LThmNDEtNGZlMC05ZDExLTM2YzEzYWUwNTllNiIsInJ1aWQiOiIyNmZlMGI4Yy1mOTA1LTRhYzItYjQ4ZC0yODVhYzNiYTIzZGMifQ.SVwuUBP6TXOmLm_bitQ1O2P-Dxg8DWRL-mScT124FWM
             Content-Type: application/json
 
 + Response 200
@@ -570,29 +460,12 @@
             {
               "data": [
                 {
-                  "id": "2128",
+                  "id": "1383",
                   "type": "task",
                   "attributes": {
-                    "name": "Stressed Out",
-                    "position": 0,
-                    "due_date": "2020-11-06T00:00:00.000Z",
-                    "done": false
-                  },
-                  "relationships": {
-                    "comments": {
-                      "data": [
-            
-                      ]
-                    }
-                  }
-                },
-                {
-                  "id": "2129",
-                  "type": "task",
-                  "attributes": {
-                    "name": "Tonight Tonight",
+                    "name": "What's Inside",
                     "position": 1,
-                    "due_date": "2020-11-06T00:00:00.000Z",
+                    "due_date": "2020-11-24T00:00:00.000Z",
                     "done": false
                   },
                   "relationships": {
@@ -604,12 +477,29 @@
                   }
                 },
                 {
-                  "id": "2130",
+                  "id": "1382",
                   "type": "task",
                   "attributes": {
-                    "name": "Hello",
+                    "name": "Facts",
                     "position": 2,
-                    "due_date": "2020-11-06T00:00:00.000Z",
+                    "due_date": "2020-11-24T00:00:00.000Z",
+                    "done": false
+                  },
+                  "relationships": {
+                    "comments": {
+                      "data": [
+            
+                      ]
+                    }
+                  }
+                },
+                {
+                  "id": "1381",
+                  "type": "task",
+                  "attributes": {
+                    "name": "Watch Me Whip",
+                    "position": 3,
+                    "due_date": "2020-11-24T00:00:00.000Z",
                     "done": false
                   },
                   "relationships": {
@@ -626,16 +516,15 @@
 ### Task details [GET /api/v1/tasks/{id}]
 
 + Parameters
-    + id: `2131` (number, required)
+    + id: `1384` (number, required)
 
 + Request returns task
-**GET**&nbsp;&nbsp;`/api/v1/tasks/2131`
+**GET**&nbsp;&nbsp;`/api/v1/tasks/1384`
 
     + Headers
 
             Accept: application/json
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDQ1MzU3ODMsInVzZXJfaWQiOjM3MzYsInVpZCI6ImI3YWRjYTM1LTQ3NzYtNGVjMS1hNjcyLTEyMjlmMGRhNzc2NCJ9.z6ZW5PG-t-bJrzYk7r4d0TTiRx8e7zzDCSiZmvkUiuA
-            X-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDUxMzY5ODMsInVzZXJfaWQiOjM3MzYsInVpZCI6IjZlYjYwYTAwLWNhYzktNGQ3ZS05NGMyLWY0ZWRmYWU2Mjg5ZSJ9.Jr2nrCvBKlVAhIjwIRIvVmtqAaTWlQfc_JprHaX0Djc
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDYwOTAxNTYsInVzZXJfaWQiOjI2OTAsInVpZCI6IjdlZTgyZTc4LTY2MDgtNDA3My04OTljLTUzYWZhOTExYjczOSIsInJ1aWQiOiIyZjE4ZWE3Zi0wNDk4LTQ1NmEtYjYxNC0xZTgwYzQ0ZjQyMWQifQ.EbGK79eIMYiX2zih836dpYw-KZUFLwuzuiQ1CsN93-8
             Content-Type: application/json
 
 + Response 200
@@ -648,12 +537,12 @@
 
             {
               "data": {
-                "id": "2131",
+                "id": "1384",
                 "type": "task",
                 "attributes": {
-                  "name": "Ex's & Oh's",
-                  "position": 0,
-                  "due_date": "2020-11-06T00:00:00.000Z",
+                  "name": "Girl Money Gone the Money Hunger Games",
+                  "position": 1,
+                  "due_date": "2020-11-24T00:00:00.000Z",
                   "done": false
                 },
                 "relationships": {
@@ -669,25 +558,22 @@
 ### Update a task [PATCH /api/v1/tasks/{id}]
 
 + Parameters
-    + id: `2132` (number, required)
+    + id: `1385` (number, required)
 
 + Request returns task
-**PATCH**&nbsp;&nbsp;`/api/v1/tasks/2132`
+**PATCH**&nbsp;&nbsp;`/api/v1/tasks/1385`
 
     + Headers
 
             Accept: application/json
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDQ1MzU3ODMsInVzZXJfaWQiOjM3MzcsInVpZCI6IjNhZGQxOGMzLWY2MWUtNGIzYi1iN2IwLWIwYmFjMWU1YjYyMiJ9.xLziqueVLnaHxn16rjvcGpI3dpkGF3uwqlFX1G7q9Eo
-            X-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDUxMzY5ODMsInVzZXJfaWQiOjM3MzcsInVpZCI6IjdlYjZkYWU2LTE1YjctNDgxOS1iYzRhLWRhMzJlYTk3MjNkNCJ9.2DyZL7mXqan-66L3OzacGchKaX9rWwMkibHXnXnht0w
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDYwOTAxNTYsInVzZXJfaWQiOjI2OTEsInVpZCI6ImZjNmY5ZmYzLTBiOTItNDYwZC05ZDQxLTRkNzQyY2RhNzZmNyIsInJ1aWQiOiIyNDMwOWUxNi01ZDdkLTRjYmItYjQ1Yi05ZTdjOTJlNDNkN2EifQ.kK9eK3XYbwHaq1H37Dp7REJREG1BAGxlh9n9UDsbfhk
             Content-Type: application/json
 
     + Body
 
             {
-              "data": {
-                "name": "No Role Modelz",
-                "due_date": "2020-11-06"
-              }
+              "name": "Like I'm Gonna Lose You",
+              "due_date": "2020-11-24"
             }
 
 + Response 201
@@ -700,12 +586,12 @@
 
             {
               "data": {
-                "id": "2132",
+                "id": "1385",
                 "type": "task",
                 "attributes": {
-                  "name": "No Role Modelz",
-                  "position": 0,
-                  "due_date": "2020-11-06T00:00:00.000Z",
+                  "name": "Like I'm Gonna Lose You",
+                  "position": 1,
+                  "due_date": "2020-11-24T00:00:00.000Z",
                   "done": false
                 },
                 "relationships": {
@@ -721,24 +607,21 @@
 ### Create a task [POST /api/v1/projects/{project_id}/tasks]
 
 + Parameters
-    + project_id: `3109` (number, required)
+    + project_id: `1930` (number, required)
 
 + Request returns task
-**POST**&nbsp;&nbsp;`/api/v1/projects/3109/tasks`
+**POST**&nbsp;&nbsp;`/api/v1/projects/1930/tasks`
 
     + Headers
 
             Accept: application/json
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDQ1MzU3ODMsInVzZXJfaWQiOjM3MzksInVpZCI6ImMxMzRjNWNiLTFlODMtNGJmMy1iMmU1LTlmM2YwNTgwZWViNyJ9.nuzQLhZnD1vPTyDFByx6p9kKrjNr1n308JgJonrWk3g
-            X-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDUxMzY5ODMsInVzZXJfaWQiOjM3MzksInVpZCI6IjQ4MWM2NWNiLTYwZjEtNDk2ZS05ZWIzLTUwYjYyNWM4MzU5YiJ9.lcDoLk3N8C5jTsGkWP1TEcOeuewQWqm2yoLObMtmH5E
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDYwOTAxNTYsInVzZXJfaWQiOjI2OTMsInVpZCI6IjQyMThkZDMwLWEwYmQtNGFmZi1iY2E2LWI3YjJhYWY0MGUzMCIsInJ1aWQiOiJkYjU2YjZkMy1iYjMyLTQ3Y2YtODA4YS1hNDQ4ODk1ZTMzNjQifQ.WibGlUI1wtbPlgPKjbC-5IbbG-kbPEs7qcju8fcYms0
             Content-Type: application/json
 
     + Body
 
             {
-              "data": {
-                "name": "History"
-              }
+              "name": "The Hills"
             }
 
 + Response 201
@@ -751,11 +634,11 @@
 
             {
               "data": {
-                "id": "2133",
+                "id": "1386",
                 "type": "task",
                 "attributes": {
-                  "name": "History",
-                  "position": 0,
+                  "name": "The Hills",
+                  "position": 1,
                   "due_date": null,
                   "done": false
                 },
@@ -772,16 +655,15 @@
 ### Destroy a task [DELETE /api/v1/tasks/{id}]
 
 + Parameters
-    + id: `2134` (number, required)
+    + id: `1387` (number, required)
 
 + Request returns http no content status
-**DELETE**&nbsp;&nbsp;`/api/v1/tasks/2134`
+**DELETE**&nbsp;&nbsp;`/api/v1/tasks/1387`
 
     + Headers
 
             Accept: application/json
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDQ1MzU3ODMsInVzZXJfaWQiOjM3NDEsInVpZCI6IjYxOGJlNWE2LTM1OWEtNGViYy05ZWEwLTc0MGQ3MzA3MzgxNiJ9.wR1g_cbrKWOt4gMHwbxIO2hz5PoQSIkXLHT7uqNMaio
-            X-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDUxMzY5ODMsInVzZXJfaWQiOjM3NDEsInVpZCI6IjdjNzM3M2IzLTczN2QtNDk3NC1iYjQ5LTk5NDAwZDA2OThjMCJ9.0x19DT4PYysZP74QZi7vHXsbyCvqCSCPtQp4QBTc9vs
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDYwOTAxNTYsInVzZXJfaWQiOjI2OTUsInVpZCI6IjI1ZjViMzYzLTRlOWEtNDRmMy04Njk1LTBiYzk1ZThlNTFjYiIsInJ1aWQiOiI3YjNkNWYyZC1kNjlhLTQxMDItODNkOS1jODA4ZWE5MWViYmEifQ.1smupiHWwsdoS_X6eQ4v_mJ2Q4QbeO8NGPpc-8Md1qo
             Content-Type: application/json
 
 + Response 204
@@ -789,16 +671,15 @@
 ### Compelete a task [PATCH /api/v1/tasks/{task_id}/complete]
 
 + Parameters
-    + task_id: `2135` (number, required)
+    + task_id: `1388` (number, required)
 
 + Request returns task
-**PATCH**&nbsp;&nbsp;`/api/v1/tasks/2135/complete`
+**PATCH**&nbsp;&nbsp;`/api/v1/tasks/1388/complete`
 
     + Headers
 
             Accept: application/json
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDQ1MzU3ODMsInVzZXJfaWQiOjM3NDIsInVpZCI6IjdiNDgzZGUxLTlmNjAtNDMxMC1hMjA2LThlODYyMzUyODAxMSJ9.ggMmGvfJUQE55JWFnxyfnFQ5xKwkLhGbfkfYZJvKfaE
-            X-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDUxMzY5ODMsInVzZXJfaWQiOjM3NDIsInVpZCI6ImYyMzNkZTU2LWFkODEtNGQ2OS1hNzk0LTAxNjNkM2FiNTgwMCJ9.0HAusYsNFYIragk0KfVOhQgqJc9qSDrl9OHfXGqCLLs
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDYwOTAxNTcsInVzZXJfaWQiOjI2OTYsInVpZCI6IjUwNWRjZjllLWQ4MGEtNGZmYS04MWRmLTAxZjFhNThmODVlYiIsInJ1aWQiOiIxNzllOGZiZS0wYTg3LTQxYWYtYjMwZi1jNjFiY2UyNjFjOTYifQ.ttihXhHCJP6w0rHbDdgkhmLCfFoPWghcGLaXlhL-J3Y
             Content-Type: application/json
 
 + Response 201
@@ -811,12 +692,12 @@
 
             {
               "data": {
-                "id": "2135",
+                "id": "1388",
                 "type": "task",
                 "attributes": {
-                  "name": "Coming Home",
-                  "position": 0,
-                  "due_date": "2020-11-06T00:00:00.000Z",
+                  "name": "On Me",
+                  "position": 1,
+                  "due_date": "2020-11-24T00:00:00.000Z",
                   "done": true
                 },
                 "relationships": {
@@ -832,24 +713,21 @@
 ### Change task position [PATCH /api/v1/tasks/{task_id}/position]
 
 + Parameters
-    + task_id: `2136` (number, required)
+    + task_id: `1392` (number, required)
 
 + Request returns position
-**PATCH**&nbsp;&nbsp;`/api/v1/tasks/2136/position`
+**PATCH**&nbsp;&nbsp;`/api/v1/tasks/1392/position`
 
     + Headers
 
             Accept: application/json
-            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDQ1MzU3ODMsInVzZXJfaWQiOjM3NDMsInVpZCI6IjE4NmI5ODE4LWFiNDAtNDAwMi04ZjZmLTU4ZGU4OTYzNGQ4OCJ9.KCeafuFsCyMl_FItTFrW5JIoROkcnFmBaZ_k6UbOB1k
-            X-Refresh-Token: eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDUxMzY5ODMsInVzZXJfaWQiOjM3NDMsInVpZCI6IjA3OTY4N2FiLTIxZmYtNDUxZi1hOGQ3LTllOTk1NTU5MjRjOSJ9.335pRBL-W4b1oWaciRNQkwvrOb6hXC0J0vVphPIkxKg
+            Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDYwOTAxNTcsInVzZXJfaWQiOjI2OTcsInVpZCI6ImIzMThmOTE5LTBlNGEtNGY3OC05YTFkLTc4ZmQ2MTUyMzJhYiIsInJ1aWQiOiJmMWI2OTFjYi02NzIwLTQ5YjktYmZiZi1hY2UxOGNhMTk5OGMifQ.rGTeZtmhWCeGQ0JPG2Rs6_wKm-_0PfF9Bdmt0KEm6mE
             Content-Type: application/json
 
     + Body
 
             {
-              "data": {
-                "position": 1
-              }
+              "position": "down"
             }
 
 + Response 201
@@ -862,10 +740,10 @@
 
             {
               "data": {
-                "id": "2136",
+                "id": "1392",
                 "type": "position",
                 "attributes": {
-                  "position": 1
+                  "position": 4
                 }
               }
             }

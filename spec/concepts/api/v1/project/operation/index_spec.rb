@@ -1,21 +1,12 @@
 RSpec.describe Api::V1::Project::Operation::Index do
   describe '#call' do
-    let(:user_params) do
-      attributes = attributes_for(:user)
-      create(:user, projects: create_list(:project, 3), **attributes)
-      attributes
+    let(:user) do
+      create(:user, projects: create_list(:project, 3))
     end
-    let(:request) { test_request(user_params: user_params) }
 
     context 'when valid params' do
       it 'success' do
-        expect(described_class.call(params: {}, request: request)).to be_success
-      end
-    end
-
-    context 'when policy is invalid' do
-      it 'returns policy error' do
-        expect(described_class.call(params: {}, request: test_request)['result.policy.default']).to be_failure
+        expect(described_class.call(params: {}, current_user: user)).to be_success
       end
     end
   end
