@@ -1,8 +1,9 @@
 module Api::V1
   module Comment::Operation
     class Create < Trailblazer::Operation
+      step ::Macro::FindById(::Task, id_parameter: :task_id, model: :task), fail_fast: true
+      step ::Macro::Guard(Api::V1::Guard::Task::TaskGuard, model: :task), fail_fast: true
       step Model(::Comment, :new), fail_fast: true
-      step Policy::Guard(Api::V1::Guard::Task::Parent), fail_fast: true
       step Contract::Build(constant: Api::V1::Comment::Contract::Create)
       step Contract::Validate()
       step Contract::Persist()

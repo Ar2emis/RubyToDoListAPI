@@ -10,7 +10,7 @@ class ApplicationController < ActionController::API
   end
 
   def current_user
-    @current_user ||= User.find_by(payload[:user_id])
+    @current_user ||= User.find_by(id: payload['user_id'])
   end
 
   def options
@@ -21,7 +21,7 @@ class ApplicationController < ActionController::API
     {
       success: ->(result) { result.success? },
       invalid: ->(result) { result['result.contract.default']&.failure? },
-      not_found: ->(result) { result['result.model'].nil? || result['result.policy.default']&.failure? }
+      not_found: ->(result) { result['result.model']&.failure? || result['result.policy.default']&.failure? }
     }
   end
 

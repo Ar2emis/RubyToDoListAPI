@@ -22,5 +22,13 @@ RSpec.describe Api::V1::Comment::Operation::Destroy do
         expect(described_class.call(params: comment_params, current_user: user)['result.policy.default']).to be_failure
       end
     end
+
+    context 'when comment does not exist' do
+      let(:comment_params) { { id: -1 } }
+
+      it 'returns model error' do
+        expect(described_class.call(params: comment_params, current_user: user)['result.model']).to be_failure
+      end
+    end
   end
 end

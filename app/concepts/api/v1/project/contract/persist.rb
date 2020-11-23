@@ -1,6 +1,6 @@
 module Api::V1
   module Project::Contract
-    class Base < ApplicationContract
+    class Persist < ApplicationContract
       property :name
       property :user
 

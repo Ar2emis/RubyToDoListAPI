@@ -1,13 +1,13 @@
 module Api::V1
   module User::Contract
     class Create < ApplicationContract
-      property :username
-      property :password
-      property :password_confirmation, virtual: true
-
       PASSWORD_REGEX = /\A[\w\d]+\z/.freeze
       PASSWORD_MIN_LENGTH = 8
       USERNAME_LENGTH = (3..50).freeze
+
+      property :username
+      property :password
+      property :password_confirmation, virtual: true
 
       validation do
         config.messages.backend = :i18n

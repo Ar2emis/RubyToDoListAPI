@@ -30,7 +30,7 @@ RSpec.describe 'Api::V1::Comments', type: :request do
     let(:task) { create(:task, project: create(:project, user: user)) }
 
     before do
-      post api_v1_task_comments_path(task), params: params, headers: headers
+      post api_v1_task_comments_path(task), params: params, headers: headers, as: :json
     end
 
     context 'when params is valid' do
@@ -44,7 +44,7 @@ RSpec.describe 'Api::V1::Comments', type: :request do
     end
 
     context 'when params is invalid' do
-      let(:params) { { name: '' } }
+      let(:params) { { name: '', image: '' } }
 
       it 'returns http unprocessable entity status' do
         expect(response).to have_http_status(:unprocessable_entity)

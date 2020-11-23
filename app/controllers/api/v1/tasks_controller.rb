@@ -33,7 +33,7 @@ module Api::V1
     end
 
     def position
-      endpoint operation: Api::V1::Task::Operation::Position, options: options,
+      endpoint operation: Api::V1::Task::Operation::Position::Update, options: options,
                renderer_options: { serializer: PositionSerializer, status: :created }
     end
   end

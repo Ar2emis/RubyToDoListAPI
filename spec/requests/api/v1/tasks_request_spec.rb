@@ -147,7 +147,7 @@ RSpec.describe 'Api::V1::Tasks', type: :request do
   describe 'PATCH /api/v1/task/{task_id}/position' do
     include Docs::V1::Tasks::Position
     let(:task) { create(:task, project: create(:project, user: user, tasks: create_list(:task, 3))) }
-    let(:params) { { position: Api::V1::Task::Service::Reprioritate::DOWN } }
+    let(:params) { { position: :down } }
 
     before do
       patch api_v1_task_position_path(task), params: params, headers: headers, as: :json

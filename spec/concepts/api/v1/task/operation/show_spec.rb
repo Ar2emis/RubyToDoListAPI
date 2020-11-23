@@ -18,5 +18,13 @@ RSpec.describe Api::V1::Task::Operation::Show do
         expect(described_class.call(params: task_params, current_user: user)['result.policy.default']).to be_failure
       end
     end
+
+    context 'when task does not exist' do
+      let(:task_params) { { id: -1 } }
+
+      it 'returns model error' do
+        expect(described_class.call(params: task_params, current_user: user)['result.model']).to be_failure
+      end
+    end
   end
 end

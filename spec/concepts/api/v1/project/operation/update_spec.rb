@@ -27,5 +27,13 @@ RSpec.describe Api::V1::Project::Operation::Update do
           .to be_failure
       end
     end
+
+    context 'when project does not exist' do
+      let(:project_params) { { id: -1 } }
+
+      it 'returns model error' do
+        expect(described_class.call(params: project_params, current_user: user)['result.model']).to be_failure
+      end
+    end
   end
 end

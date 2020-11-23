@@ -1,4 +1,4 @@
-RSpec.describe Api::V1::Guard::Project::Base do
+RSpec.describe Api::V1::Guard::Project::ProjectGuard do
   describe '.call' do
     let(:user) { create(:user) }
 

@@ -1,4 +1,4 @@
-RSpec.describe Api::V1::Project::Contract::Base do
+RSpec.describe Api::V1::Project::Contract::Persist do
   subject(:contract) { described_class.new(Project.new(user: user)) }
 
   let(:user) { create(:user) }

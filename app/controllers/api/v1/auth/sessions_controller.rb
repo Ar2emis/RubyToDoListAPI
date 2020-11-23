@@ -1,6 +1,8 @@
 module Api::V1
   module Auth
     class SessionsController < Api::V1::Auth::AuthController
+      before_action :authorize_access_request!, only: %i[destroy]
+
       def create
         endpoint operation: Api::V1::Session::Operation::Create, before_response: before_response,
                  renderer_options: { serializer: UserSerializer, status: :ok }, different_cases: create_cases,
@@ -8,7 +10,6 @@ module Api::V1
       end
 
       def destroy
-        authorize_access_request!
         endpoint operation: Api::V1::Session::Operation::Destroy, options: { payload: payload },
                  different_handler: destroy_handler
       end

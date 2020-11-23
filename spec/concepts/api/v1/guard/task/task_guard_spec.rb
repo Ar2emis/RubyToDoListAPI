@@ -1,4 +1,4 @@
-RSpec.describe Api::V1::Guard::Task::Base do
+RSpec.describe Api::V1::Guard::Task::TaskGuard do
   describe '.call' do
     let(:user) { create(:user) }
 

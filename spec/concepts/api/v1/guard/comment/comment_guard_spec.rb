@@ -1,4 +1,4 @@
-RSpec.describe Api::V1::Guard::Comment::Base do
+RSpec.describe Api::V1::Guard::Comment::CommentGuard do
   describe '.call' do
     let(:user) { create(:user) }
 

@@ -1,4 +1,4 @@
-RSpec.describe Api::V1::Task::Service::Reprioritate do
+RSpec.describe Api::V1::ReprioritateService do
   describe '.call' do
     let(:tasks) { create_list(:task, 3, project: create(:project)) }
 
@@ -6,7 +6,7 @@ RSpec.describe Api::V1::Task::Service::Reprioritate do
       let(:task) { tasks.last }
 
       it 'decreases task position by 1' do
-        expect { described_class.call(task: task, position: described_class::UP) }.to change(task, :position).by(-1)
+        expect { described_class.call(task: task, position: :up) }.to change(task, :position).by(-1)
       end
     end
 
@@ -14,7 +14,7 @@ RSpec.describe Api::V1::Task::Service::Reprioritate do
       let(:task) { tasks.first }
 
       it 'increases task position by 1' do
-        expect { described_class.call(task: task, position: described_class::DOWN) }.to change(task, :position).by(1)
+        expect { described_class.call(task: task, position: :down) }.to change(task, :position).by(1)
       end
     end
   end

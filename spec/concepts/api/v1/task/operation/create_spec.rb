@@ -23,11 +23,19 @@ RSpec.describe Api::V1::Task::Operation::Create do
       end
     end
 
-    context 'when project does not exist' do
-      let(:task_params) { { project_id: -1 } }
+    context 'when project is not owned by user' do
+      let(:task_params) { { project_id: create(:project).id } }
 
       it 'returns policy error' do
         expect(described_class.call(params: task_params, current_user: user)['result.policy.default']).to be_failure
+      end
+    end
+
+    context 'when project does not exist' do
+      let(:task_params) { { project_id: -1 } }
+
+      it 'returns model error' do
+        expect(described_class.call(params: task_params, current_user: user)['result.model']).to be_failure
       end
     end
   end
