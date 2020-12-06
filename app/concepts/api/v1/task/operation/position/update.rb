@@ -2,7 +2,7 @@ module Api::V1
   module Task::Operation
     module Position
       class Update < Trailblazer::Operation
-        step ::Macro::FindById(::Task, id_parameter: :task_id)
+        step ::Macro::FindBy(::Task, parameter: :task_id)
         step Policy::Guard(Api::V1::Guard::Task::TaskGuard), fail_fast: true
         step Contract::Build(constant: Api::V1::Task::Contract::Position)
         step Contract::Validate()

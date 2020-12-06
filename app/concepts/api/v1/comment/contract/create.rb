@@ -1,8 +1,6 @@
 module Api::V1
   module Comment::Contract
     class Create < ApplicationContract
-      BODY_SIZE = (10..256).freeze
-
       property :body
       property :image
       property :task_id
@@ -12,7 +10,7 @@ module Api::V1
         config.messages.namespace = :comment
 
         params do
-          required(:body).filled(:string, size?: BODY_SIZE)
+          required(:body).filled(:string, size?: ::Constants::BODY_SIZE)
           required(:image).maybe(:filled?)
         end
 

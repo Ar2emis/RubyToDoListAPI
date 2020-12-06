@@ -19,12 +19,12 @@ RSpec.describe Api::V1::User::Contract::Create do
     {
       username: [
         { message: 'is empty', value: '' },
-        { message: 'is too long', value: 'a' * (described_class::USERNAME_LENGTH.max + 1) },
-        { message: 'is too short', value: 'a' * (described_class::USERNAME_LENGTH.min - 1) }
+        { message: 'is too long', value: 'a' * (::Constants::USERNAME_LENGTH.max + 1) },
+        { message: 'is too short', value: 'a' * (::Constants::USERNAME_LENGTH.min - 1) }
       ],
       password: [
         { message: 'is empty', value: '' },
-        { message: 'is too short', value: 'a' * (described_class::PASSWORD_MIN_LENGTH - 1) }
+        { message: 'is too short', value: 'a' * (::Constants::PASSWORD_MIN_LENGTH - 1) }
       ],
       password_confirmation: [
         { message: 'is empty', value: '' }

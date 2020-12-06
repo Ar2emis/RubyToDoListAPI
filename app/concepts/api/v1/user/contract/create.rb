@@ -1,10 +1,6 @@
 module Api::V1
   module User::Contract
     class Create < ApplicationContract
-      PASSWORD_REGEX = /\A[\w\d]+\z/.freeze
-      PASSWORD_MIN_LENGTH = 8
-      USERNAME_LENGTH = (3..50).freeze
-
       property :username
       property :password
       property :password_confirmation, virtual: true
@@ -14,8 +10,9 @@ module Api::V1
         config.messages.namespace = :user
 
         params do
-          required(:username).filled(:string, size?: USERNAME_LENGTH)
-          required(:password).filled(:string, min_size?: PASSWORD_MIN_LENGTH, format?: PASSWORD_REGEX)
+          required(:username).filled(:string, size?: ::Constants::USERNAME_LENGTH)
+          required(:password).filled(:string, min_size?: ::Constants::PASSWORD_MIN_LENGTH,
+                                              format?: ::Constants::PASSWORD_REGEX)
           required(:password_confirmation).filled(:string)
         end
 

@@ -33,3 +33,7 @@ Style/ClassAndModuleChildren:
 Rails/ApplicationController:
   Exclude: 
     - 'app/controllers/documentations_controller.rb'
+
+Naming/MethodName:
+  Exclude:
+    - 'lib/macro/*'
