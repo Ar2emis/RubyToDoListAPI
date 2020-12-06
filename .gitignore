@@ -1,5 +1,6 @@
 /.bundle
 /vendor
+/node_modules
 
 /log/*
 /tmp/*
@@ -11,9 +12,7 @@
 
 .byebug_history
 
-/config/database.yml
 /config/master.key
-
 .env
 
 /coverage

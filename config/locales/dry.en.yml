@@ -1,0 +1,27 @@
+en:
+  dry_validation:
+    errors:
+      user:
+        rules:
+          username:
+            exists?: already exists
+          password_confirmation:
+            match?: doesn't match password
+          password_match:
+            match?: invalid
+      project:
+        rules:
+          name:
+            exists?: already exists
+      task:
+        rules:
+          due_date:
+            time_zone?: is invalid date format
+            future?: must not already be passed
+          position: 
+            valid?: invalid
+            same?: can't be the same
+      comment:
+        rules:
+          image:
+            invalid?: invalid format

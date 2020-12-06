@@ -1,0 +1,13 @@
+{
+  "data": {
+    "id": "number",
+    "type": "string",
+    "attributes": {
+      "username": "string",
+      "provider": "string",
+      "uid": "string",
+      "created_at": "string",
+      "updated_at": "string"
+    }
+  }
+}
